@@ -42,7 +42,6 @@ export default function HomePage() {
         subheadline="Family run specialists supplying, installing, repairing and automating garage doors and gates across Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders."
         ctas={[
           { label: "Get a free quote", href: "/contact", variant: "primary" },
-          { label: `Call ${business.phone}`, href: business.phoneHref, variant: "secondary" },
           { label: "WhatsApp", href: business.whatsAppHref, variant: "outline" },
         ]}
         showTrustBar={true}
