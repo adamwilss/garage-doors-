@@ -1,0 +1,37 @@
+import { Metadata } from "next";
+import { brochures } from "@/lib/content";
+import { BrochureCard } from "../components/BrochureCard";
+import { ScrollReveal } from "../components/ScrollReveal";
+
+export const metadata: Metadata = {
+  title: "Brochures | Alutech and Hormann Garage Doors | Quality Garage Doors Carlisle",
+  description:
+    "Download product brochures for Alutech sectional garage doors, Hormann ranges and garage door automation guides.",
+};
+
+export default function BrochuresPage() {
+  return (
+    <>
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+                Product Brochures
+              </h1>
+              <p className="text-slate-600 text-lg">
+                Download brochures to explore garage door styles, colours, finishes and automation options before your free survey.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {brochures.map((brochure, i) => (
+              <BrochureCard key={brochure.id} brochure={brochure} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

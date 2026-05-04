@@ -1,0 +1,37 @@
+"use client";
+
+import { business } from "@/lib/content";
+import { Phone, MessageCircle, FileText } from "lucide-react";
+import Link from "next/link";
+
+export function StickyMobileCTA() {
+  return (
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+      <div className="grid grid-cols-3 divide-x divide-slate-200">
+        <a
+          href={business.phoneHref}
+          className="flex flex-col items-center justify-center py-3 text-slate-700 hover:text-accent active:bg-slate-50 transition-colors"
+        >
+          <Phone className="w-5 h-5 mb-1" />
+          <span className="text-xs font-medium">Call</span>
+        </a>
+        <a
+          href={business.whatsAppHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center justify-center py-3 text-slate-700 hover:text-accent active:bg-slate-50 transition-colors"
+        >
+          <MessageCircle className="w-5 h-5 mb-1" />
+          <span className="text-xs font-medium">WhatsApp</span>
+        </a>
+        <Link
+          href="/contact"
+          className="flex flex-col items-center justify-center py-3 text-slate-700 hover:text-accent active:bg-slate-50 transition-colors"
+        >
+          <FileText className="w-5 h-5 mb-1" />
+          <span className="text-xs font-medium">Quote</span>
+        </Link>
+      </div>
+    </div>
+  );
+}
