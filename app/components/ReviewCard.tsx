@@ -14,7 +14,7 @@ export function ReviewCard({ review, index = 0 }: { review: Review; index?: numb
   return (
     <ScrollReveal delay={index * 0.15} direction={index % 2 === 0 ? "left" : "right"}>
       <TiltCard className="h-full">
-        <div className="relative p-6 h-full">
+        <div className="relative p-6 h-full bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl">
           <div className="absolute -top-2 -left-2 text-6xl text-accent/20 font-serif leading-none select-none">
             &ldquo;
           </div>

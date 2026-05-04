@@ -44,7 +44,7 @@ export function CTASection({
               <MagneticButton href={business.phoneHref} strength={0.25}>
                 <span className={`inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors border border-white/20 ${
                   isDark
-                    ? "bg-[#1a1a1a] hover:bg-[#2a2a2a] text-white"
+                    ? "bg-white/10 dark:bg-[#1a1a1a] hover:bg-white/20 dark:hover:bg-[#2a2a2a] text-white"
                     : "bg-accent-700 hover:bg-accent-600 text-white"
                 }`}>
                   <Phone className="w-4 h-4" />
@@ -54,7 +54,7 @@ export function CTASection({
               <MagneticButton href={business.whatsAppHref} strength={0.25}>
                 <span className={`inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors border border-white/20 ${
                   isDark
-                    ? "bg-[#1a1a1a] hover:bg-[#2a2a2a] text-white"
+                    ? "bg-white/10 dark:bg-[#1a1a1a] hover:bg-white/20 dark:hover:bg-[#2a2a2a] text-white"
                     : "bg-accent-700 hover:bg-accent-600 text-white"
                 }`}>
                   <MessageCircle className="w-4 h-4" />

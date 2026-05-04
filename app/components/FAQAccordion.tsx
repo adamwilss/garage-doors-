@@ -16,7 +16,7 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
     <div className="space-y-4">
       {faqs.map((faq, i) => (
         <ScrollReveal key={i} delay={i * 0.05}>
-          <div className="border-b border-slate-200 dark:border-[#2a2a2a] overflow-hidden">
+          <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl overflow-hidden">
             <button
               type="button"
               className="w-full flex items-center justify-between py-5 text-left group"

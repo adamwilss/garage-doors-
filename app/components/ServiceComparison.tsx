@@ -31,7 +31,7 @@ export function ServiceComparison() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {comparisons.map((item, i) => (
         <ScrollReveal key={item.name} delay={i * 0.1}>
-          <div className="group p-6 hover:bg-slate-50 dark:hover:bg-[#1a1a1a]/50 rounded-xl transition-all">
+          <div className="group p-6 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl hover:bg-slate-50 dark:hover:bg-[#1a1a1a]/50 transition-all">
             <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-accent-light dark:bg-accent/10 text-accent mb-4 group-hover:scale-110 transition-transform">
               {item.icon}
             </div>
