@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Phone, MessageCircle, FileText } from "lucide-react";
 import { AssembleText } from "./AssembleText";
 import { ParticleCanvas } from "./ParticleCanvas";
+import { GarageDoorReveal } from "./GarageDoorReveal";
 
 export type HeroVariant = "default" | "garage-doors" | "repairs" | "automation" | "gates" | "gallery" | "contact" | "content";
 
@@ -40,7 +41,7 @@ export function Hero({
   const prefersReducedMotion = useReducedMotion();
   const bgClass = variantStyles[variant];
 
-  return (
+  const heroContent = (
     <section className={`relative text-white overflow-hidden ${bgClass}`}>
       {/* Particle canvas on relevant variants */}
       {(variant === "default" || variant === "garage-doors" || variant === "automation") && (
@@ -107,7 +108,7 @@ export function Hero({
                 </Link>
                 <a
                   href={business.phoneHref}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 rounded-md font-semibold text-base transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-[#1a1a1a] rounded-md font-semibold text-base transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   Call {business.phone}
@@ -138,4 +139,10 @@ export function Hero({
       </div>
     </section>
   );
+
+  if (variant === "default") {
+    return <GarageDoorReveal>{heroContent}</GarageDoorReveal>;
+  }
+
+  return heroContent;
 }
