@@ -112,7 +112,7 @@ function GalleryCard({
 
         {/* Expand icon */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 transition-transform">
             <Maximize2 className="w-5 h-5" />
           </div>
         </div>
