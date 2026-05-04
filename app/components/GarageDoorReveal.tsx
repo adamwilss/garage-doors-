@@ -75,11 +75,13 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
               filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.8))",
             }}
           >
+            <div className="absolute inset-0 bg-[#252525]" />
             <Image
               src="/images/logo.png"
               alt="Quality Garage Doors Carlisle"
               fill
-              className="object-contain"
+              className="object-contain relative z-10"
+              style={{ mixBlendMode: "multiply" }}
               priority
             />
           </div>
