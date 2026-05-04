@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { ChevronUp, ChevronDown } from "lucide-react";
@@ -8,6 +8,7 @@ import { ChevronUp, ChevronDown } from "lucide-react";
 export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
   const prefersReducedMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Auto-open the door shortly after the page loads
   useEffect(() => {
@@ -67,22 +68,25 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
         {/* Brand accent line at bottom of door */}
         <div className="h-1 bg-accent shrink-0" />
 
-        {/* Logo centered on door */}
-        <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+        {/* Logo animation video centered on door */}
+        <div className="absolute inset-0 flex items-center justify-center z-30">
           <div
-            className="relative w-52 h-28 sm:w-64 sm:h-32"
-            style={{
-              filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.8))",
+            className="relative w-64 h-36 sm:w-80 sm:h-44 cursor-pointer"
+            onMouseEnter={() => {
+              if (videoRef.current) {
+                videoRef.current.currentTime = 0;
+                videoRef.current.play();
+              }
             }}
           >
-            <div className="absolute inset-0 bg-[#252525]" />
-            <Image
-              src="/images/logo.png"
-              alt="Quality Garage Doors Carlisle"
-              fill
-              className="object-contain relative z-10"
-              style={{ mixBlendMode: "multiply" }}
-              priority
+            <video
+              ref={videoRef}
+              src="/videos/logo-animation.mp4"
+              autoPlay
+              muted
+              playsInline
+              className="w-full h-full object-contain"
+              style={{ filter: "brightness(1.2) drop-shadow(0 4px 16px rgba(0,0,0,0.9))" }}
             />
           </div>
         </div>
