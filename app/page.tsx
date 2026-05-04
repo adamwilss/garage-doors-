@@ -71,7 +71,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Why Choose */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-16">
@@ -149,7 +149,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Gates */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <ScrollReveal direction="left">
@@ -269,7 +269,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Reviews */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -332,7 +332,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* FAQs */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-12">

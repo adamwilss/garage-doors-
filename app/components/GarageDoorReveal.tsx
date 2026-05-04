@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
   const prefersReducedMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Auto-open the door shortly after the page loads
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const timer = setTimeout(() => setIsOpen(true), 1200);
+    return () => clearTimeout(timer);
+  }, [prefersReducedMotion]);
 
   if (prefersReducedMotion) {
     return <>{children}</>;
@@ -22,9 +30,9 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
       {/* Garage door overlay */}
       <motion.div
         className="absolute inset-0 z-20 flex flex-col"
-        initial={{ y: 0 }}
+        initial={{ y: "0%" }}
         animate={{ y: isOpen ? "-100%" : "0%" }}
-        transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
+        transition={{ duration: 1.6, ease: [0.43, 0.13, 0.23, 0.96] }}
       >
         {/* Frame top */}
         <div className="h-2 bg-[#111] shrink-0" />
@@ -59,6 +67,24 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
         {/* Brand accent line at bottom of door */}
         <div className="h-1 bg-accent shrink-0" />
 
+        {/* Logo centered on door */}
+        <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+          <div
+            className="relative w-52 h-28 sm:w-64 sm:h-32"
+            style={{
+              filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.8))",
+            }}
+          >
+            <Image
+              src="/images/logo.png"
+              alt="Quality Garage Doors Carlisle"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
+
         {/* Handle */}
         <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-30">
           <div className="w-14 h-3 rounded-full bg-[#444] border border-[#555] shadow-lg">
@@ -72,7 +98,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 2.2, duration: 0.6, ease: "easeOut" }}
+          transition={{ delay: 3, duration: 0.6, ease: "easeOut" }}
           className="hidden sm:flex flex-col items-center gap-3"
         >
           {/* Remote body */}
@@ -93,7 +119,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="w-12 h-12 rounded-full bg-accent hover:bg-accent-600 active:scale-95 transition-all shadow-lg flex items-center justify-center"
+              className="w-12 h-12 rounded-full bg-accent hover:bg-accent-600 active:scale-95 transition-all shadow-lg flex items-center justify-center pointer-events-auto"
               aria-label={isOpen ? "Close garage door" : "Open garage door"}
             >
               <AnimatePresence mode="wait">
@@ -123,7 +149,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="w-8 h-5 rounded-md bg-[#2a2a2a] hover:bg-[#333] active:bg-[#444] transition-colors border border-[#333]"
+              className="w-8 h-5 rounded-md bg-[#2a2a2a] hover:bg-[#333] active:bg-[#444] transition-colors border border-[#333] pointer-events-auto"
               aria-label="Toggle garage door"
             >
               <div className="w-full h-px bg-[#444] mt-2" />

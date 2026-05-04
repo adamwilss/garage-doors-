@@ -115,7 +115,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map placeholder */}
-      <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-8">
