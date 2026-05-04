@@ -77,7 +77,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Why Choose */}
-      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f] relative overflow-hidden">
+      <section className="py-16 lg:py-20 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none opacity-50">
           <div className="absolute inset-0 rounded-full border border-accent/10 animate-spin" style={{ animationDuration: "40s" }} />
@@ -181,7 +181,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Gates */}
-      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <ScrollReveal direction="left">
@@ -280,7 +280,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Reviews */}
-      <section className="relative py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f] overflow-hidden">
+      <section className="relative py-16 lg:py-20 overflow-hidden">
         {/* Organic blob shapes */}
         <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-3xl pointer-events-none" />
@@ -346,7 +346,7 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* FAQs */}
-      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
+      <section className="py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-12">
