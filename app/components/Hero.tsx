@@ -5,6 +5,9 @@ import { business } from "@/lib/content";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, MessageCircle, FileText } from "lucide-react";
 import { AssembleText } from "./AssembleText";
+import { ParticleCanvas } from "./ParticleCanvas";
+
+export type HeroVariant = "default" | "garage-doors" | "repairs" | "automation" | "gates" | "gallery" | "contact" | "content";
 
 interface HeroProps {
   headline: string;
@@ -12,16 +15,47 @@ interface HeroProps {
   ctas?: { label: string; href: string; variant: "primary" | "secondary" | "outline" }[];
   showTrustBar?: boolean;
   trustPoints?: string[];
+  variant?: HeroVariant;
 }
 
-export function Hero({ headline, subheadline, ctas, showTrustBar = false, trustPoints }: HeroProps) {
+const variantStyles: Record<HeroVariant, string> = {
+  default: "bg-[#050505]",
+  "garage-doors": "bg-gradient-to-br from-[#050505] via-[#1a2e14] to-[#050505]",
+  repairs: "bg-gradient-to-br from-[#050505] via-[#2a2a2a] to-[#050505]",
+  automation: "bg-gradient-to-br from-[#050505] via-[#1a1a2e] to-[#050505]",
+  gates: "bg-gradient-to-br from-[#050505] via-[#1e3318] to-[#050505]",
+  gallery: "bg-[#050505]",
+  contact: "bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a]",
+  content: "bg-gradient-to-br from-[#050505] via-[#1a1a1a] to-[#050505]",
+};
+
+export function Hero({
+  headline,
+  subheadline,
+  ctas,
+  showTrustBar = false,
+  trustPoints,
+  variant = "default",
+}: HeroProps) {
   const prefersReducedMotion = useReducedMotion();
+  const bgClass = variantStyles[variant];
 
   return (
-    <section className="relative bg-[#050505] text-white overflow-hidden">
-      {/* Background overlay pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#1a1a1a] to-[#050505]" />
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-accent to-transparent" />
+    <section className={`relative text-white overflow-hidden ${bgClass}`}>
+      {/* Particle canvas on relevant variants */}
+      {(variant === "default" || variant === "garage-doors" || variant === "automation") && (
+        <ParticleCanvas />
+      )}
+
+      {/* Subtle grid pattern for automation variant */}
+      {variant === "automation" && (
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(103,168,68,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(103,168,68,0.5) 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
+          }}
+        />
+      )}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
         <div className="max-w-3xl">

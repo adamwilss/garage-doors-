@@ -35,13 +35,13 @@ export function ProcessSteps() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {steps.map((step, i) => (
         <ScrollReveal key={step.number} delay={i * 0.15}>
-          <div className="relative bg-white border border-slate-200 rounded-xl p-6 h-full">
-            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-accent-light text-accent mb-4">
+          <div className="relative bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl p-6 h-full">
+            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-accent-light dark:bg-accent/10 text-accent mb-4">
               {step.icon}
             </div>
             <div className="text-xs font-bold text-accent mb-2">Step {step.number}</div>
-            <h3 className="text-base font-bold text-slate-900 mb-2">{step.title}</h3>
-            <p className="text-sm text-slate-600">{step.description}</p>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400">{step.description}</p>
           </div>
         </ScrollReveal>
       ))}

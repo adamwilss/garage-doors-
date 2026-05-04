@@ -6,6 +6,7 @@ import { StickyMobileCTA } from "./components/StickyMobileCTA";
 import { SEOJsonLd } from "./components/SEOJsonLd";
 import { ScrollProgress } from "./components/ScrollProgress";
 import { OrganicBlobs } from "./components/OrganicBlobs";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
@@ -30,15 +31,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || 'system';
+                  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (theme === 'dark' || (theme === 'system' && systemDark)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col relative">
-        <OrganicBlobs />
-        <ScrollProgress />
-        <SEOJsonLd type="LocalBusiness" />
-        <Header />
-        <main className="flex-1 relative z-10">{children}</main>
-        <Footer />
-        <StickyMobileCTA />
+        <ThemeProvider>
+          <OrganicBlobs />
+          <ScrollProgress />
+          <SEOJsonLd type="LocalBusiness" />
+          <Header />
+          <main className="flex-1 relative z-10">{children}</main>
+          <Footer />
+          <StickyMobileCTA />
+        </ThemeProvider>
       </body>
     </html>
   );

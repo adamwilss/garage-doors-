@@ -16,13 +16,13 @@ const iconMap: Record<string, React.ReactNode> = {
 export function TrustBar() {
   return (
     <ScrollReveal direction="up">
-      <div className="bg-slate-100 border-y border-slate-200">
+      <div className="bg-slate-100 dark:bg-[#141414] border-y border-slate-200 dark:border-[#222] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {business.trustPoints.map((point) => (
               <div
                 key={point}
-                className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300"
               >
                 <span className="text-accent">{iconMap[point] || <BadgeCheck className="w-5 h-5" />}</span>
                 {point}

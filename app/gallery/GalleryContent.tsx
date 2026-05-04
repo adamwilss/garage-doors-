@@ -13,10 +13,10 @@ export function GalleryContent() {
     <>
       <ScrollReveal>
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
             Gallery
           </h1>
-          <p className="text-slate-600 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             A selection of garage door and gate installations across our service area.
           </p>
         </div>
