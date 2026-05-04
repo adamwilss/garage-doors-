@@ -7,6 +7,7 @@ import { SEOJsonLd } from "./components/SEOJsonLd";
 import { ScrollProgress } from "./components/ScrollProgress";
 import { OrganicBlobs } from "./components/OrganicBlobs";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { ChatWidget } from "./components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
@@ -58,6 +59,7 @@ export default function RootLayout({
           <main className="flex-1 relative z-10">{children}</main>
           <Footer />
           <StickyMobileCTA />
+          <ChatWidget />
         </ThemeProvider>
       </body>
     </html>

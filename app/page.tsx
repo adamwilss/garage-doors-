@@ -74,7 +74,7 @@ export default function HomePage() {
       <section className="py-16 lg:py-20 bg-slate-50 dark:bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                 Why Choose Quality Garage Doors Carlisle
               </h2>
@@ -83,10 +83,13 @@ export default function HomePage() {
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
             {whyChoosePoints.map((point, i) => (
               <ScrollReveal key={point.title} delay={i * 0.1}>
-                <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl p-6 h-full">
+                <div className="relative">
+                  <div className="text-5xl font-extrabold text-accent/10 dark:text-accent/20 mb-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{point.title}</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{point.description}</p>
                 </div>
@@ -232,14 +235,14 @@ export default function HomePage() {
               <ScrollReveal key={project.title} delay={i * 0.15}>
                 <Link
                   href="/case-studies"
-                  className="group block bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-accent/5 transition-all"
+                  className="group block"
                 >
-                  <div className="aspect-video bg-slate-200 dark:bg-[#222] relative">
+                  <div className="aspect-video bg-slate-200 dark:bg-[#222] rounded-xl overflow-hidden relative mb-4">
                     <div className="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-slate-600 text-sm">
                       Project image
                     </div>
                   </div>
-                  <div className="p-5">
+                  <div>
                     <div className="text-xs font-medium text-accent mb-1">{project.service}</div>
                     <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 group-hover:text-accent transition-colors">
                       {project.title}

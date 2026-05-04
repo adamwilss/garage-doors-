@@ -59,7 +59,7 @@ export function Hero({
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
         <div className="max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-balance break-keep">
             <AssembleText text={headline} />
           </h1>
           <motion.p
@@ -78,8 +78,8 @@ export function Hero({
               const base = "inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors";
               const variants = {
                 primary: "bg-accent hover:bg-accent-600 text-white",
-                secondary: "bg-white hover:bg-slate-100 text-slate-900",
-                outline: "border-2 border-white hover:bg-white hover:text-slate-900 text-white",
+                secondary: "bg-white hover:bg-slate-100 text-[#1a1a1a]",
+                outline: "border-2 border-white hover:bg-white hover:text-[#1a1a1a] text-white",
               };
               const isExternal = cta.href.startsWith("http") || cta.href.startsWith("tel:");
               const Tag = isExternal ? "a" : Link;
