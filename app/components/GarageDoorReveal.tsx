@@ -93,33 +93,33 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
         </div>
       </motion.div>
 
-      {/* Remote control — positioned on right side of hero */}
+      {/* Premium remote control — positioned on right side of hero */}
       <div className="absolute top-1/2 right-4 sm:right-8 lg:right-12 -translate-y-1/2 z-30">
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 3, duration: 0.6, ease: "easeOut" }}
-          className="hidden sm:flex flex-col items-center gap-3"
+          className="hidden sm:flex flex-col items-center"
         >
           {/* Remote body */}
-          <div className="w-20 h-36 rounded-2xl bg-[#1a1a1a] border border-[#333] shadow-2xl flex flex-col items-center justify-between py-4 px-3 relative">
-            {/* LED indicator */}
-            <div className="flex items-center gap-1.5">
-              <div
-                className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
-                  isOpen ? "bg-accent shadow-[0_0_6px_rgba(63,116,47,0.8)]" : "bg-[#444]"
-                }`}
-              />
-              <span className="text-[9px] text-[#666] uppercase tracking-wider font-medium">
-                {isOpen ? "OPEN" : "CLOSED"}
-              </span>
-            </div>
+          <div className="w-16 h-32 rounded-[2rem] bg-gradient-to-b from-[#3a3a3a] via-[#2a2a2a] to-[#1a1a1a] shadow-[0_8px_32px_rgba(0,0,0,0.6),0_2px_4px_rgba(255,255,255,0.05)_inset] flex flex-col items-center py-5 px-3 relative ring-1 ring-white/10">
+            {/* Subtle metallic rim */}
+            <div className="absolute inset-0 rounded-[2rem] border border-white/5 pointer-events-none" />
+
+            {/* Status LED */}
+            <div
+              className={`w-1.5 h-1.5 rounded-full mb-4 transition-all duration-500 ${
+                isOpen
+                  ? "bg-accent shadow-[0_0_10px_rgba(103,168,68,0.9)]"
+                  : "bg-[#555]"
+              }`}
+            />
 
             {/* Main button */}
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="w-12 h-12 rounded-full bg-accent hover:bg-accent-600 active:scale-95 transition-all shadow-lg flex items-center justify-center pointer-events-auto"
+              className="w-11 h-11 rounded-full bg-gradient-to-b from-[#4a8a33] to-[#28591F] hover:from-[#5a9a43] hover:to-[#38692F] active:scale-90 active:shadow-inner transition-all shadow-[0_4px_12px_rgba(63,116,47,0.4),0_1px_2px_rgba(255,255,255,0.1)_inset] flex items-center justify-center pointer-events-auto ring-1 ring-white/10"
               aria-label={isOpen ? "Close garage door" : "Open garage door"}
             >
               <AnimatePresence mode="wait">
@@ -129,8 +129,9 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown className="w-5 h-5 text-white" />
+                    <ChevronDown className="w-4 h-4 text-white/90" strokeWidth={2.5} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -138,27 +139,17 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <ChevronUp className="w-5 h-5 text-white" />
+                    <ChevronUp className="w-4 h-4 text-white/90" strokeWidth={2.5} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </button>
 
-            {/* Small secondary button */}
-            <button
-              type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              className="w-8 h-5 rounded-md bg-[#2a2a2a] hover:bg-[#333] active:bg-[#444] transition-colors border border-[#333] pointer-events-auto"
-              aria-label="Toggle garage door"
-            >
-              <div className="w-full h-px bg-[#444] mt-2" />
-            </button>
+            {/* Subtle brand line at bottom */}
+            <div className="mt-auto pt-3 w-6 h-px bg-white/10 rounded-full" />
           </div>
-
-          <span className="text-[10px] text-white/50 uppercase tracking-widest">
-            Remote
-          </span>
         </motion.div>
       </div>
     </div>
