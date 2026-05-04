@@ -16,22 +16,22 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
     <div className="space-y-4">
       {faqs.map((faq, i) => (
         <ScrollReveal key={i} delay={i * 0.05}>
-          <div className="border border-slate-200 dark:border-[#2a2a2a] rounded-xl bg-white dark:bg-[#1a1a1a] overflow-hidden">
+          <div className="border-b border-slate-200 dark:border-[#2a2a2a] overflow-hidden">
             <button
               type="button"
-              className="w-full flex items-center justify-between p-5 text-left"
+              className="w-full flex items-center justify-between py-5 text-left group"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               aria-expanded={openIndex === i}
             >
-              <span className="font-semibold text-slate-900 dark:text-white pr-4">{faq.question}</span>
+              <span className="font-semibold text-slate-900 dark:text-white pr-4 group-hover:text-accent transition-colors">{faq.question}</span>
               <ChevronDown
                 className={`w-5 h-5 text-slate-500 dark:text-slate-500 shrink-0 transition-transform duration-300 ${
-                  openIndex === i ? "rotate-180" : ""
+                  openIndex === i ? "rotate-180 text-accent" : ""
                 }`}
               />
             </button>
             <div
-              className={`px-5 transition-all duration-300 ease-in-out ${
+              className={`transition-all duration-300 ease-in-out ${
                 openIndex === i ? "pb-5 max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
               }`}
             >

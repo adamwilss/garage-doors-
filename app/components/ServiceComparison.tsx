@@ -31,12 +31,13 @@ export function ServiceComparison() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {comparisons.map((item, i) => (
         <ScrollReveal key={item.name} delay={i * 0.1}>
-          <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl p-6 hover:border-accent hover:shadow-md dark:hover:shadow-accent/5 transition-all">
-            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-accent-light dark:bg-accent/10 text-accent mb-4">
+          <div className="group p-6 hover:bg-slate-50 dark:hover:bg-[#1a1a1a]/50 rounded-xl transition-all">
+            <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-accent-light dark:bg-accent/10 text-accent mb-4 group-hover:scale-110 transition-transform">
               {item.icon}
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">{item.name}</h3>
             <p className="text-sm text-slate-600 dark:text-slate-400">{item.tagline}</p>
+            <div className="mt-4 h-px bg-gradient-to-r from-accent/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
           </div>
         </ScrollReveal>
       ))}

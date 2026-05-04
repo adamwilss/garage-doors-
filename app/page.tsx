@@ -17,8 +17,13 @@ import { FAQAccordion } from "./components/FAQAccordion";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { SEOJsonLd } from "./components/SEOJsonLd";
 import { AnimatedDivider } from "./components/AnimatedDivider";
+import { AssembleText } from "./components/AssembleText";
+import { ProjectCarousel } from "./components/ProjectCarousel";
+import { FlipCard } from "./components/FlipCard";
+import { WhyChooseConnector } from "./components/WhyChooseConnector";
+import { OrbitalRings } from "./components/OrbitalRings";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star, DoorOpen, Shield, Thermometer, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
@@ -48,12 +53,14 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Services */}
-      <section className="py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-20 relative overflow-hidden">
+        <OrbitalRings />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                Our Services
+                <AssembleText text="Our Services" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
                 Everything from supply and installation to repairs, automation and gates.
@@ -71,27 +78,32 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Why Choose */}
-      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f] relative overflow-hidden">
+        <WhyChooseConnector />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                Why Choose Quality Garage Doors Carlisle
+                <AssembleText text="Why Choose Quality Garage Doors Carlisle" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
                 A family business with 25 years of experience and a reputation for quality.
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
+          <div className="relative max-w-3xl mx-auto space-y-16">
             {whyChoosePoints.map((point, i) => (
-              <ScrollReveal key={point.title} delay={i * 0.1}>
-                <div className="relative">
-                  <div className="text-5xl font-extrabold text-accent/10 dark:text-accent/20 mb-3">
-                    {String(i + 1).padStart(2, "0")}
+              <ScrollReveal key={point.title} delay={i * 0.15}>
+                <div className={`flex items-center gap-8 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}>
+                  <div className="shrink-0">
+                    <div className="w-20 h-20 rounded-full bg-accent/10 dark:bg-accent/20 flex items-center justify-center">
+                      <span className="text-3xl font-extrabold text-accent">{String(i + 1).padStart(2, "0")}</span>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{point.title}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{point.description}</p>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{point.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{point.description}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -107,32 +119,53 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                Popular Garage Door Types
+                <AssembleText text="Popular Garage Door Types" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                We supply and install a wide range of garage doors to suit every property and budget.
+                We supply and install a wide range of garage doors to suit every property and budget. Tap a card to flip and learn more.
               </p>
             </div>
           </ScrollReveal>
           <ServiceComparison />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {garageDoorTypes.map((type, i) => (
-              <ScrollReveal key={type.name} delay={i * 0.1}>
-                <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{type.name}</h3>
-                  <p className="text-sm font-medium text-accent mb-3">{type.tagline}</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">{type.description}</p>
-                  <ul className="space-y-1">
-                    {type.features.map((f) => (
-                      <li key={f} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                        <span className="text-accent mt-0.5">&#10003;</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ScrollReveal>
-            ))}
+            {garageDoorTypes.map((type, i) => {
+              const iconMap: Record<string, React.ReactNode> = {
+                "Sectional doors": <Thermometer className="w-8 h-8" />,
+                "Roller shutter doors": <Shield className="w-8 h-8" />,
+                "Up and over doors": <DoorOpen className="w-8 h-8" />,
+                "Side hinged doors": <Zap className="w-8 h-8" />,
+              };
+              return (
+                <FlipCard
+                  key={type.name}
+                  index={i}
+                  front={
+                    <div className="h-full flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl">
+                      <div className="w-16 h-16 rounded-full bg-accent-light dark:bg-accent/10 text-accent flex items-center justify-center mb-4">
+                        {iconMap[type.name] || <DoorOpen className="w-8 h-8" />}
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{type.name}</h3>
+                      <p className="text-sm font-medium text-accent">{type.tagline}</p>
+                      <p className="text-xs text-slate-400 mt-4">Tap to flip</p>
+                    </div>
+                  }
+                  back={
+                    <div className="h-full flex flex-col justify-center p-6 bg-accent dark:bg-[#1e3318] text-white rounded-xl">
+                      <h3 className="text-lg font-bold mb-3">{type.name}</h3>
+                      <p className="text-sm leading-relaxed mb-4 opacity-90">{type.description}</p>
+                      <ul className="space-y-2">
+                        {type.features.map((f) => (
+                          <li key={f} className="text-sm flex items-start gap-2">
+                            <span className="mt-0.5">&#10003;</span>
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  }
+                />
+              );
+            })}
           </div>
           <div className="text-center mt-10">
             <Link
@@ -172,8 +205,8 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right">
-              <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl p-6">
-                <ul className="space-y-3">
+              <div className="p-2">
+                <ul className="space-y-4">
                   {[
                     "Sliding gates",
                     "Swing gates",
@@ -184,7 +217,7 @@ export default function HomePage() {
                     "Residential gates",
                     "Commercial gates",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                    <li key={item} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
                       <span className="w-2 h-2 rounded-full bg-accent shrink-0" />
                       {item}
                     </li>
@@ -204,15 +237,15 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                Recent Projects
+                <AssembleText text="Recent Projects" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                A selection of garage door and gate installations across our service area.
+                A selection of garage door and gate installations across our service area. Drag to explore.
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
+          <ProjectCarousel
+            projects={[
               {
                 title: "Case Study 1",
                 location: "Carlisle, Cumbria",
@@ -231,29 +264,8 @@ export default function HomePage() {
                 service: "Automated Gate Installation",
                 desc: "Residential sliding gate with automation, safety photocells and access control.",
               },
-            ].map((project, i) => (
-              <ScrollReveal key={project.title} delay={i * 0.15}>
-                <Link
-                  href="/case-studies"
-                  className="group block"
-                >
-                  <div className="aspect-video bg-slate-200 dark:bg-[#222] rounded-xl overflow-hidden relative mb-4">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-slate-600 text-sm">
-                      Project image
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-accent mb-1">{project.service}</div>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 group-hover:text-accent transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-500 mb-2">{project.location}</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">{project.desc}</p>
-                  </div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
+            ]}
+          />
           <div className="text-center mt-10">
             <Link
               href="/case-studies"
@@ -269,19 +281,22 @@ export default function HomePage() {
       <AnimatedDivider />
 
       {/* Reviews */}
-      <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f] overflow-hidden">
+        {/* Organic blob shapes */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-3xl pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                What Our Customers Say
+                <AssembleText text="What Our Customers Say" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
                 Excellent rating based on {reviews.length} reviews.
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {reviews.map((review, i) => (
               <ReviewCard key={i} review={review} index={i} />
             ))}
@@ -297,7 +312,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                Areas We Cover
+                <AssembleText text="Areas We Cover" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
                 Based in Carlisle, we travel across the region to install and repair garage doors and gates.
@@ -337,7 +352,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                Frequently Asked Questions
+                <AssembleText text="Frequently Asked Questions" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
                 Common questions about our garage door and gate services.

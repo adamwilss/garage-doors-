@@ -59,8 +59,8 @@ export function Hero({
       )}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
-        <div className="max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-balance break-keep">
+        <div>
+          <h1 className="text-xl sm:text-xl md:text-[1.75rem] lg:text-[2.2rem] xl:text-[2.8rem] 2xl:text-[3.25rem] font-extrabold tracking-tight leading-tight mb-6 text-balance sm:whitespace-nowrap">
             <AssembleText text={headline} />
           </h1>
           <motion.p
@@ -72,7 +72,7 @@ export function Hero({
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 max-w-2xl"
             {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.6 } })}
           >
             {ctas?.map((cta) => {
@@ -80,7 +80,7 @@ export function Hero({
               const variants = {
                 primary: "bg-accent hover:bg-accent-600 text-white",
                 secondary: "bg-white hover:bg-[#f2f2f2] text-black shadow-lg shadow-black/30",
-                outline: "border-2 border-white hover:bg-white hover:text-[#1a1a1a] text-white",
+                outline: "border-2 border-accent text-accent hover:bg-accent hover:text-white",
               };
               const isExternal = cta.href.startsWith("http") || cta.href.startsWith("tel:");
               const Tag = isExternal ? "a" : Link;
