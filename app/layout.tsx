@@ -4,6 +4,8 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { StickyMobileCTA } from "./components/StickyMobileCTA";
 import { SEOJsonLd } from "./components/SEOJsonLd";
+import { ScrollProgress } from "./components/ScrollProgress";
+import { OrganicBlobs } from "./components/OrganicBlobs";
 
 export const metadata: Metadata = {
   title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
@@ -29,10 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col relative">
+        <OrganicBlobs />
+        <ScrollProgress />
         <SEOJsonLd type="LocalBusiness" />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
         <StickyMobileCTA />
       </body>

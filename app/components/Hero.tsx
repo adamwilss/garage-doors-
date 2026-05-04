@@ -4,6 +4,7 @@ import Link from "next/link";
 import { business } from "@/lib/content";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, MessageCircle, FileText } from "lucide-react";
+import { AssembleText } from "./AssembleText";
 
 interface HeroProps {
   headline: string;
@@ -28,15 +29,12 @@ export function Hero({ headline, subheadline, ctas, showTrustBar = false, trustP
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
         <div className="max-w-3xl">
-          <motion.h1
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6"
-            {...animationProps}
-          >
-            {headline}
-          </motion.h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+            <AssembleText text={headline} />
+          </h1>
           <motion.p
             className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl"
-            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.15 } })}
+            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.4 } })}
           >
             {subheadline}
           </motion.p>
@@ -44,7 +42,7 @@ export function Hero({ headline, subheadline, ctas, showTrustBar = false, trustP
           {/* CTAs */}
           <motion.div
             className="flex flex-wrap gap-4"
-            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.3 } })}
+            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.6 } })}
           >
             {ctas?.map((cta) => {
               const base = "inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors";
@@ -93,7 +91,7 @@ export function Hero({ headline, subheadline, ctas, showTrustBar = false, trustP
         {showTrustBar && trustPoints && (
           <motion.div
             className="mt-12 pt-8 border-t border-slate-700/50"
-            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.45 } })}
+            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.8 } })}
           >
             <div className="flex flex-wrap gap-3">
               {trustPoints.map((point) => (

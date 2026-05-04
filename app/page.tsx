@@ -16,6 +16,7 @@ import { ReviewCard } from "./components/ReviewCard";
 import { FAQAccordion } from "./components/FAQAccordion";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { SEOJsonLd } from "./components/SEOJsonLd";
+import { AnimatedDivider } from "./components/AnimatedDivider";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -44,6 +45,7 @@ export default function HomePage() {
       />
 
       <TrustBar />
+      <AnimatedDivider />
 
       {/* Services */}
       <section className="py-16 lg:py-20">
@@ -65,6 +67,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* Why Choose */}
       <section className="py-16 lg:py-20 bg-slate-50">
@@ -91,6 +94,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* Popular Types */}
       <section className="py-16 lg:py-20">
@@ -136,6 +140,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* Gates */}
       <section className="py-16 lg:py-20 bg-slate-50">
@@ -184,6 +189,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* Recent Projects / Case Studies */}
       <section className="py-16 lg:py-20">
@@ -252,6 +258,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* Reviews */}
       <section className="py-16 lg:py-20 bg-slate-50">
@@ -273,6 +280,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* Areas Covered */}
       <section className="py-16 lg:py-20">
@@ -311,6 +319,7 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+      <AnimatedDivider />
 
       {/* FAQs */}
       <section className="py-16 lg:py-20 bg-slate-50">

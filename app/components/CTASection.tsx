@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { business } from "@/lib/content";
 import { ScrollReveal } from "./ScrollReveal";
+import { MagneticButton } from "./MagneticButton";
 import { Phone, MessageCircle, FileText } from "lucide-react";
 
 interface CTASectionProps {
@@ -24,29 +25,24 @@ export function CTASection({
             </h2>
             <p className="text-accent-light text-base sm:text-lg mb-8">{subheadline}</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 rounded-md font-semibold text-base transition-colors"
-              >
-                <FileText className="w-4 h-4" />
-                Get a free quote
-              </Link>
-              <a
-                href={business.phoneHref}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent-700 hover:bg-accent-600 text-white rounded-md font-semibold text-base transition-colors border border-white/20"
-              >
-                <Phone className="w-4 h-4" />
-                Call {business.phone}
-              </a>
-              <a
-                href={business.whatsAppHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent-700 hover:bg-accent-600 text-white rounded-md font-semibold text-base transition-colors border border-white/20"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp
-              </a>
+              <MagneticButton href="/contact" strength={0.25}>
+                <span className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 rounded-md font-semibold text-base transition-colors">
+                  <FileText className="w-4 h-4" />
+                  Get a free quote
+                </span>
+              </MagneticButton>
+              <MagneticButton href={business.phoneHref} strength={0.25}>
+                <span className="inline-flex items-center gap-2 px-6 py-3 bg-accent-700 hover:bg-accent-600 text-white rounded-md font-semibold text-base transition-colors border border-white/20">
+                  <Phone className="w-4 h-4" />
+                  Call {business.phone}
+                </span>
+              </MagneticButton>
+              <MagneticButton href={business.whatsAppHref} strength={0.25}>
+                <span className="inline-flex items-center gap-2 px-6 py-3 bg-accent-700 hover:bg-accent-600 text-white rounded-md font-semibold text-base transition-colors border border-white/20">
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </span>
+              </MagneticButton>
             </div>
           </div>
         </div>
