@@ -161,7 +161,7 @@ export default function HomePage() {
                       </div>
                       <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{type.name}</h3>
                       <p className="text-sm font-medium text-accent">{type.tagline}</p>
-                      <p className="text-xs text-slate-400 mt-4">Tap to flip</p>
+                      <p className="text-xs text-slate-500 mt-4">Tap to flip</p>
                     </div>
                   }
                   back={

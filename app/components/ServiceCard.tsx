@@ -32,7 +32,7 @@ export function ServiceCard({ service, index = 0 }: { service: Service; index?: 
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent-light dark:bg-accent/10 text-accent group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all">
                 {iconMap[service.icon] || <DoorOpen className="w-7 h-7" />}
               </div>
-              <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-accent group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-accent group-hover:translate-x-1 transition-all" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{service.title}</h3>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{service.description}</p>

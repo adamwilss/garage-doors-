@@ -157,7 +157,7 @@ export function Header() {
             </Link>
 
             <div className="py-2 border-b border-slate-100 dark:border-[#222]">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1 block">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-1 block">
                 Services
               </span>
               <div className="flex flex-col gap-1 pl-2">

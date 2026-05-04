@@ -125,7 +125,7 @@ export default function ContactPage() {
           </ScrollReveal>
           <ScrollReveal>
             <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl overflow-hidden aspect-video flex items-center justify-center">
-              <div className="text-center text-slate-400 dark:text-slate-500">
+              <div className="text-center text-slate-500 dark:text-slate-500">
                 <MapPin className="w-10 h-10 mx-auto mb-2" />
                 <p className="text-sm">Map placeholder — embed Google Maps here</p>
               </div>

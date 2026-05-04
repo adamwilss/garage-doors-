@@ -111,7 +111,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-slate-600 text-sm">
+            <div className="absolute inset-0 flex items-center justify-center text-slate-500 dark:text-slate-600 text-sm">
               Project image
             </div>
           )}
