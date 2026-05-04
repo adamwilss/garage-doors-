@@ -8,9 +8,16 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <h3 className="text-slate-900 dark:text-white text-lg font-bold mb-4">
-              Quality Garage Doors Carlisle
-            </h3>
+            <div className="relative w-44 h-24 mb-4">
+              <video
+                src="/videos/logo-animation.mp4"
+                autoPlay
+                muted
+                playsInline
+                loop
+                className="w-full h-full object-contain"
+              />
+            </div>
             <p className="text-sm leading-relaxed mb-4">
               Family run specialists supplying, installing, repairing and automating garage
               doors and gates across Carlisle and the surrounding region.
