@@ -21,6 +21,7 @@ import { AssembleText } from "./components/AssembleText";
 import { ProjectCarousel } from "./components/ProjectCarousel";
 import { FlipCard } from "./components/FlipCard";
 import { OrbitalRings } from "./components/OrbitalRings";
+import { WhyChooseCard } from "./components/WhyChooseCard";
 import Link from "next/link";
 import { ArrowRight, Star, DoorOpen, Shield, Thermometer, Zap } from "lucide-react";
 
@@ -77,6 +78,12 @@ export default function HomePage() {
 
       {/* Why Choose */}
       <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f] relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none opacity-50">
+          <div className="absolute inset-0 rounded-full border border-accent/10 animate-spin" style={{ animationDuration: "40s" }} />
+          <div className="absolute inset-12 rounded-full border border-accent/15 animate-spin" style={{ animationDuration: "30s", animationDirection: "reverse" }} />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-16">
@@ -89,39 +96,16 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Desktop timeline line */}
-            <div className="absolute left-1/2 top-8 bottom-8 md:top-10 md:bottom-10 w-px bg-accent/40 -translate-x-1/2 hidden md:block rounded-full" />
-
-            <div className="space-y-12 md:space-y-16">
-              {whyChoosePoints.map((point, i) => (
-                <ScrollReveal key={point.title} delay={i * 0.15}>
-                  <div
-                    className={`flex flex-col-reverse md:flex-row md:items-center gap-4 md:gap-12 ${
-                      i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
-                  >
-                    {/* Content */}
-                    <div className={`flex-1 ${i % 2 !== 0 ? "md:text-right" : ""}`}>
-                      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 whitespace-nowrap">{point.title}</h3>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{point.description}</p>
-                    </div>
-
-                    {/* Number node */}
-                    <div className="shrink-0 relative z-10">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-slate-100 dark:bg-[#0f0f0f] border-2 border-accent/30 flex items-center justify-center">
-                        <span className="text-2xl md:text-3xl font-extrabold text-accent">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Spacer for alternating layout */}
-                    <div className="hidden md:block flex-1" />
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {whyChoosePoints.map((point, i) => (
+              <WhyChooseCard
+                key={point.title}
+                number={String(i + 1).padStart(2, "0")}
+                title={point.title}
+                description={point.description}
+                index={i}
+              />
+            ))}
           </div>
         </div>
       </section>
