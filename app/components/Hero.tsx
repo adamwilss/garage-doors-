@@ -20,14 +20,14 @@ interface HeroProps {
 }
 
 const variantStyles: Record<HeroVariant, string> = {
-  default: "bg-[#050505]",
-  "garage-doors": "bg-gradient-to-br from-[#050505] via-[#1a2e14] to-[#050505]",
-  repairs: "bg-gradient-to-br from-[#050505] via-[#2a2a2a] to-[#050505]",
-  automation: "bg-gradient-to-br from-[#050505] via-[#1a1a2e] to-[#050505]",
-  gates: "bg-gradient-to-br from-[#050505] via-[#1e3318] to-[#050505]",
-  gallery: "bg-[#050505]",
-  contact: "bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a]",
-  content: "bg-gradient-to-br from-[#050505] via-[#1a1a1a] to-[#050505]",
+  default: "bg-slate-100 dark:bg-[#050505]",
+  "garage-doors": "bg-gradient-to-br from-slate-100 via-[#e8f0e5] to-slate-100 dark:from-[#050505] dark:via-[#1a2e14] dark:to-[#050505]",
+  repairs: "bg-gradient-to-br from-slate-100 via-[#e8e8e8] to-slate-100 dark:from-[#050505] dark:via-[#2a2a2a] dark:to-[#050505]",
+  automation: "bg-gradient-to-br from-slate-100 via-[#e8e8f0] to-slate-100 dark:from-[#050505] dark:via-[#1a1a2e] dark:to-[#050505]",
+  gates: "bg-gradient-to-br from-slate-100 via-[#e8f0e5] to-slate-100 dark:from-[#050505] dark:via-[#1e3318] dark:to-[#050505]",
+  gallery: "bg-slate-100 dark:bg-[#050505]",
+  contact: "bg-gradient-to-br from-slate-100 via-[#e8e8e8] to-slate-100 dark:from-[#1a1a1a] dark:via-[#2a2a2a] dark:to-[#1a1a1a]",
+  content: "bg-gradient-to-br from-slate-100 via-[#e8e8e8] to-slate-100 dark:from-[#050505] dark:via-[#1a1a1a] dark:to-[#050505]",
 };
 
 export function Hero({
@@ -42,7 +42,7 @@ export function Hero({
   const bgClass = variantStyles[variant];
 
   const heroContent = (
-    <section className={`relative text-white overflow-hidden ${bgClass}`}>
+    <section className={`relative text-slate-900 dark:text-white overflow-hidden ${bgClass}`}>
       {/* Particle canvas on relevant variants */}
       {(variant === "default" || variant === "garage-doors" || variant === "automation") && (
         <ParticleCanvas />
@@ -64,7 +64,7 @@ export function Hero({
             <AssembleText text={headline} />
           </h1>
           <motion.p
-            className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl"
+            className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl"
             {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.4 } })}
           >
             {subheadline}
@@ -128,7 +128,7 @@ export function Hero({
               {trustPoints.map((point) => (
                 <span
                   key={point}
-                  className="inline-flex items-center px-3 py-1.5 bg-white/10 text-slate-300 text-sm font-medium rounded-full border border-white/10"
+                  className="inline-flex items-center px-3 py-1.5 bg-slate-200/50 dark:bg-white/10 text-slate-600 dark:text-slate-300 text-sm font-medium rounded-full border border-slate-300/50 dark:border-white/10"
                 >
                   {point}
                 </span>

@@ -35,30 +35,27 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
         transition={{ duration: 1.6, ease: [0.43, 0.13, 0.23, 0.96] }}
       >
         {/* Frame top */}
-        <div className="h-2 bg-[#111] shrink-0" />
+        <div className="h-2 bg-[#ccc] dark:bg-[#111] shrink-0" />
 
         {/* Side tracks */}
-        <div className="absolute top-0 left-0 bottom-0 w-2 bg-[#2a2a2a] z-30" />
-        <div className="absolute top-0 right-0 bottom-0 w-2 bg-[#2a2a2a] z-30" />
+        <div className="absolute top-0 left-0 bottom-0 w-2 bg-[#bbb] dark:bg-[#2a2a2a] z-30" />
+        <div className="absolute top-0 right-0 bottom-0 w-2 bg-[#bbb] dark:bg-[#2a2a2a] z-30" />
 
         {/* Main door panels */}
         {Array.from({ length: panelCount }).map((_, i) => (
           <div
             key={i}
-            className="flex-1 relative"
-            style={{
-              background: `linear-gradient(180deg, #252525 0%, #1c1c1c 100%)`,
-            }}
+            className="flex-1 relative bg-gradient-to-b from-[#d5d5d5] to-[#c5c5c5] dark:from-[#252525] dark:to-[#1c1c1c]"
           >
             {/* Panel horizontal seam */}
-            <div className="absolute bottom-0 left-2 right-2 h-px bg-[#3a3a3a]" />
-            <div className="absolute bottom-px left-2 right-2 h-px bg-[#111]" />
+            <div className="absolute bottom-0 left-2 right-2 h-px bg-[#aaa] dark:bg-[#3a3a3a]" />
+            <div className="absolute bottom-px left-2 right-2 h-px bg-[#ccc] dark:bg-[#111]" />
 
             {/* Subtle ribbing */}
             <div
               className="absolute inset-0 opacity-[0.04]"
               style={{
-                backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.6) 48px, rgba(255,255,255,0.6) 49px)`,
+                backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(128,128,128,0.2) 48px, rgba(128,128,128,0.2) 49px)`,
               }}
             />
           </div>
@@ -75,7 +72,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
               filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.8))",
             }}
           >
-            <div className="absolute inset-0 bg-[#252525]" />
+            <div className="absolute inset-0 bg-[#e5e5e5] dark:bg-[#252525]" />
             <Image
               src="/images/logo.png"
               alt="Quality Garage Doors Carlisle"
@@ -89,8 +86,8 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
 
         {/* Handle */}
         <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-30">
-          <div className="w-14 h-3 rounded-full bg-[#444] border border-[#555] shadow-lg">
-            <div className="w-full h-px bg-[#555] mt-1.5" />
+          <div className="w-14 h-3 rounded-full bg-[#999] dark:bg-[#444] border border-[#888] dark:border-[#555] shadow-lg">
+            <div className="w-full h-px bg-[#888] dark:bg-[#555] mt-1.5" />
           </div>
         </div>
       </motion.div>
@@ -104,7 +101,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
           className="hidden sm:flex flex-col items-center"
         >
           {/* Remote body */}
-          <div className="w-16 h-32 rounded-[2rem] bg-gradient-to-b from-[#3a3a3a] via-[#2a2a2a] to-[#1a1a1a] shadow-[0_8px_32px_rgba(0,0,0,0.6),0_2px_4px_rgba(255,255,255,0.05)_inset] flex flex-col items-center py-5 px-3 relative ring-1 ring-white/10">
+          <div className="w-16 h-32 rounded-[2rem] bg-gradient-to-b from-[#ddd] via-[#ccc] to-[#bbb] dark:from-[#3a3a3a] dark:via-[#2a2a2a] dark:to-[#1a1a1a] shadow-[0_8px_32px_rgba(0,0,0,0.3),0_2px_4px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6),0_2px_4px_rgba(255,255,255,0.05)_inset] flex flex-col items-center py-5 px-3 relative ring-1 ring-black/10 dark:ring-white/10">
             {/* Subtle metallic rim */}
             <div className="absolute inset-0 rounded-[2rem] border border-white/5 pointer-events-none" />
 
@@ -113,7 +110,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
               className={`w-1.5 h-1.5 rounded-full mb-4 transition-all duration-500 ${
                 isOpen
                   ? "bg-accent shadow-[0_0_10px_rgba(103,168,68,0.9)]"
-                  : "bg-[#555]"
+                  : "bg-[#bbb] dark:bg-[#555]"
               }`}
             />
 

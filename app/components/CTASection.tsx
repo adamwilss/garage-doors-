@@ -21,16 +21,16 @@ export function CTASection({
 
   return (
     <ScrollReveal>
-      <section className={isDark ? "bg-[#050505]" : "bg-accent"}>
+      <section className={isDark ? "bg-slate-100 dark:bg-[#050505]" : "bg-accent"}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 ${
-              isDark ? "text-white" : "text-white"
+              isDark ? "text-slate-900 dark:text-white" : "text-white"
             }`}>
               {headline}
             </h2>
             <p className={`text-base sm:text-lg mb-8 ${
-              isDark ? "text-slate-400" : "text-accent-light"
+              isDark ? "text-slate-600 dark:text-slate-400" : "text-accent-light"
             }`}>
               {subheadline}
             </p>
@@ -42,20 +42,20 @@ export function CTASection({
                 </span>
               </MagneticButton>
               <MagneticButton href={business.phoneHref} strength={0.25}>
-                <span className={`inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors border border-white/20 ${
+                <span className={`inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors ${
                   isDark
-                    ? "bg-white/10 dark:bg-[#1a1a1a] hover:bg-white/20 dark:hover:bg-[#2a2a2a] text-white"
-                    : "bg-accent-700 hover:bg-accent-600 text-white"
+                    ? "bg-slate-200 dark:bg-[#1a1a1a] hover:bg-slate-300 dark:hover:bg-[#2a2a2a] text-slate-900 dark:text-white border border-slate-300 dark:border-white/20"
+                    : "bg-accent-700 hover:bg-accent-600 text-white border border-white/20"
                 }`}>
                   <Phone className="w-4 h-4" />
                   Call {business.phone}
                 </span>
               </MagneticButton>
               <MagneticButton href={business.whatsAppHref} strength={0.25}>
-                <span className={`inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors border border-white/20 ${
+                <span className={`inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors ${
                   isDark
-                    ? "bg-white/10 dark:bg-[#1a1a1a] hover:bg-white/20 dark:hover:bg-[#2a2a2a] text-white"
-                    : "bg-accent-700 hover:bg-accent-600 text-white"
+                    ? "bg-slate-200 dark:bg-[#1a1a1a] hover:bg-slate-300 dark:hover:bg-[#2a2a2a] text-slate-900 dark:text-white border border-slate-300 dark:border-white/20"
+                    : "bg-accent-700 hover:bg-accent-600 text-white border border-white/20"
                 }`}>
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp

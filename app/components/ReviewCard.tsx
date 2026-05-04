@@ -23,7 +23,7 @@ export function ReviewCard({ review, index = 0 }: { review: Review; index?: numb
               <Star
                 key={i}
                 className={`w-4 h-4 ${
-                  i < review.rating ? "text-accent fill-accent" : "text-slate-300 dark:text-[#333]"
+                  i < review.rating ? "text-accent fill-accent" : "text-slate-400 dark:text-[#333]"
                 }`}
               />
             ))}
