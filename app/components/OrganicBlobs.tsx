@@ -9,9 +9,9 @@ const blobRadii = [
 ];
 
 const blobConfigs = [
-  { size: 300, top: "10%", left: "-5%", color: "rgba(217,119,6,0.04)", duration: 14 },
-  { size: 250, top: "40%", right: "-8%", color: "rgba(217,119,6,0.05)", duration: 18 },
-  { size: 200, bottom: "10%", left: "20%", color: "rgba(217,119,6,0.03)", duration: 16 },
+  { size: 300, top: "10%", left: "-5%", color: "rgba(63,116,47,0.04)", duration: 14 },
+  { size: 250, top: "40%", right: "-8%", color: "rgba(63,116,47,0.05)", duration: 18 },
+  { size: 200, bottom: "10%", left: "20%", color: "rgba(63,116,47,0.03)", duration: 16 },
 ];
 
 export function OrganicBlobs() {

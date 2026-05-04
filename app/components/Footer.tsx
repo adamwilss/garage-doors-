@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { business, services, areas, navLinks } from "@/lib/content";
+import { business, services, areas } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300">
+    <footer className="bg-[#333333] text-slate-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Company Info */}
@@ -17,22 +17,22 @@ export function Footer() {
             </p>
             <ul className="text-sm space-y-2">
               <li>
-                <span className="text-slate-400">Phone:</span>{" "}
-                <a href={business.phoneHref} className="text-white hover:text-accent">
+                <span className="text-slate-500">Phone:</span>{" "}
+                <a href={business.phoneHref} className="text-white hover:text-accent transition-colors">
                   {business.phone}
                 </a>
               </li>
               <li>
-                <span className="text-slate-400">Mobile:</span>{" "}
-                <a href={business.mobileHref} className="text-white hover:text-accent">
+                <span className="text-slate-500">Mobile:</span>{" "}
+                <a href={business.mobileHref} className="text-white hover:text-accent transition-colors">
                   {business.mobile}
                 </a>
               </li>
               <li>
-                <span className="text-slate-400">Address:</span> {business.address}
+                <span className="text-slate-500">Address:</span> {business.address}
               </li>
               <li>
-                <span className="text-slate-400">VAT:</span> {business.vat}
+                <span className="text-slate-500">VAT:</span> {business.vat}
               </li>
             </ul>
           </div>
@@ -66,7 +66,7 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/areas-covered" className="text-accent hover:text-accent-light">
+                <Link href="/areas-covered" className="text-accent hover:text-accent-light transition-colors">
                   View all areas
                 </Link>
               </li>
@@ -88,7 +88,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+        <div className="mt-12 pt-8 border-t border-[#444444] flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
           <p>
             &copy; {new Date().getFullYear()} {business.name}. All rights reserved.
           </p>

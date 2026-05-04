@@ -7,7 +7,7 @@ export function TiltCard({
   children,
   className = "",
   tiltAmount = 10,
-  glareColor = "rgba(217,119,6,0.08)",
+  glareColor = "rgba(63,116,47,0.08)",
 }: {
   children: ReactNode;
   className?: string;

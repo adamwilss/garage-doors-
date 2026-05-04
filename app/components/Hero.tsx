@@ -17,14 +17,10 @@ interface HeroProps {
 export function Hero({ headline, subheadline, ctas, showTrustBar = false, trustPoints }: HeroProps) {
   const prefersReducedMotion = useReducedMotion();
 
-  const animationProps = prefersReducedMotion
-    ? {}
-    : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6 } };
-
   return (
-    <section className="relative bg-slate-900 text-white overflow-hidden">
+    <section className="relative bg-[#050505] text-white overflow-hidden">
       {/* Background overlay pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#050505] via-[#1a1a1a] to-[#050505]" />
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-accent to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
@@ -90,14 +86,14 @@ export function Hero({ headline, subheadline, ctas, showTrustBar = false, trustP
         {/* Trust Bar */}
         {showTrustBar && trustPoints && (
           <motion.div
-            className="mt-12 pt-8 border-t border-slate-700/50"
+            className="mt-12 pt-8 border-t border-white/10"
             {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.8 } })}
           >
             <div className="flex flex-wrap gap-3">
               {trustPoints.map((point) => (
                 <span
                   key={point}
-                  className="inline-flex items-center px-3 py-1.5 bg-slate-800/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700"
+                  className="inline-flex items-center px-3 py-1.5 bg-white/10 text-slate-300 text-sm font-medium rounded-full border border-white/10"
                 >
                   {point}
                 </span>

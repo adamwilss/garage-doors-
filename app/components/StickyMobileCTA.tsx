@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export function StickyMobileCTA() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-      <div className="grid grid-cols-3 divide-x divide-slate-200">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#333333] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.2)]">
+      <div className="grid grid-cols-3 divide-x divide-[#444444]">
         <a
           href={business.phoneHref}
-          className="flex flex-col items-center justify-center py-3 text-slate-700 hover:text-accent active:bg-slate-50 transition-colors"
+          className="flex flex-col items-center justify-center py-3 text-white hover:text-accent active:bg-[#444444] transition-colors"
         >
           <Phone className="w-5 h-5 mb-1" />
           <span className="text-xs font-medium">Call</span>
@@ -19,14 +19,14 @@ export function StickyMobileCTA() {
           href={business.whatsAppHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center py-3 text-slate-700 hover:text-accent active:bg-slate-50 transition-colors"
+          className="flex flex-col items-center justify-center py-3 text-white hover:text-accent active:bg-[#444444] transition-colors"
         >
           <MessageCircle className="w-5 h-5 mb-1" />
           <span className="text-xs font-medium">WhatsApp</span>
         </a>
         <Link
           href="/contact"
-          className="flex flex-col items-center justify-center py-3 text-slate-700 hover:text-accent active:bg-slate-50 transition-colors"
+          className="flex flex-col items-center justify-center py-3 bg-accent hover:bg-accent-600 text-white active:bg-accent-700 transition-colors"
         >
           <FileText className="w-5 h-5 mb-1" />
           <span className="text-xs font-medium">Quote</span>
