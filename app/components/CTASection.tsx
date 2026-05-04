@@ -36,7 +36,7 @@ export function CTASection({
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <MagneticButton href="/contact" strength={0.25}>
-                <span className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 rounded-md font-semibold text-base transition-colors">
+                <span className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#e8e8e8] text-[#1a1a1a] rounded-md font-semibold text-base transition-colors">
                   <FileText className="w-4 h-4" />
                   Get a free quote
                 </span>

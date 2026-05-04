@@ -1,15 +1,18 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
   const prefersReducedMotion = useReducedMotion();
+  const [isOpen, setIsOpen] = useState(false);
 
   if (prefersReducedMotion) {
     return <>{children}</>;
   }
 
-  const panelCount = 6;
+  const panelCount = 5;
 
   return (
     <div className="relative overflow-hidden">
@@ -20,77 +23,118 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
       <motion.div
         className="absolute inset-0 z-20 flex flex-col"
         initial={{ y: 0 }}
-        animate={{ y: "-100%" }}
-        transition={{ duration: 1.8, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.6 }}
+        animate={{ y: isOpen ? "-100%" : "0%" }}
+        transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
       >
-        {/* Track rails on sides */}
-        <div className="absolute top-0 left-0 bottom-0 w-3 bg-[#1a1a1a] border-r border-[#333] z-30">
-          <div className="absolute top-4 left-1 w-1 h-3 rounded-full bg-[#555]" />
-          <div className="absolute top-12 left-1 w-1 h-3 rounded-full bg-[#555]" />
-          <div className="absolute top-20 left-1 w-1 h-3 rounded-full bg-[#555]" />
-        </div>
-        <div className="absolute top-0 right-0 bottom-0 w-3 bg-[#1a1a1a] border-l border-[#333] z-30">
-          <div className="absolute top-4 right-1 w-1 h-3 rounded-full bg-[#555]" />
-          <div className="absolute top-12 right-1 w-1 h-3 rounded-full bg-[#555]" />
-          <div className="absolute top-20 right-1 w-1 h-3 rounded-full bg-[#555]" />
-        </div>
+        {/* Frame top */}
+        <div className="h-2 bg-[#111] shrink-0" />
 
-        {/* Top header panel */}
-        <div className="h-8 bg-[#0f0f0f] border-b border-[#333] flex items-center justify-between px-6 z-20">
-          <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#333]" />
-            <div className="w-2 h-2 rounded-full bg-[#333]" />
-          </div>
-          <span className="text-[10px] text-[#555] tracking-widest uppercase font-medium">
-            Quality Garage Doors Carlisle
-          </span>
-          <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#333]" />
-            <div className="w-2 h-2 rounded-full bg-[#333]" />
-          </div>
-        </div>
+        {/* Side tracks */}
+        <div className="absolute top-0 left-0 bottom-0 w-2 bg-[#2a2a2a] z-30" />
+        <div className="absolute top-0 right-0 bottom-0 w-2 bg-[#2a2a2a] z-30" />
 
         {/* Main door panels */}
         {Array.from({ length: panelCount }).map((_, i) => (
-          <motion.div
+          <div
             key={i}
             className="flex-1 relative"
-            initial={{ y: 0 }}
-            animate={{ y: 0 }}
             style={{
-              background: `linear-gradient(180deg, ${i % 2 === 0 ? "#2a2a2a" : "#252525"} 0%, ${i % 2 === 0 ? "#222222" : "#1e1e1e"} 100%)`,
+              background: `linear-gradient(180deg, #252525 0%, #1c1c1c 100%)`,
             }}
           >
-            {/* Horizontal panel gap line */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-[#3a3a3a]" />
-            <div className="absolute bottom-px left-0 right-0 h-px bg-[#111]" />
+            {/* Panel horizontal seam */}
+            <div className="absolute bottom-0 left-2 right-2 h-px bg-[#3a3a3a]" />
+            <div className="absolute bottom-px left-2 right-2 h-px bg-[#111]" />
 
-            {/* Panel texture / subtle ribbing */}
-            <div className="absolute inset-0 opacity-[0.03]"
+            {/* Subtle ribbing */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
               style={{
-                backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.5) 40px, rgba(255,255,255,0.5) 41px)`,
+                backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.6) 48px, rgba(255,255,255,0.6) 49px)`,
               }}
             />
-
-            {/* Center detail on middle panels */}
-            {(i === 2 || i === 3) && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-1 rounded-full bg-[#444] shadow-inner" />
-              </div>
-            )}
-          </motion.div>
+          </div>
         ))}
 
-        {/* Bottom seal */}
-        <div className="h-2 bg-[#1a1a1a] border-t border-[#333]" />
+        {/* Brand accent line at bottom of door */}
+        <div className="h-1 bg-accent shrink-0" />
 
-        {/* Handle on the second panel from bottom */}
-        <div className="absolute bottom-[calc(16.66%+8px)] left-1/2 -translate-x-1/2 z-30">
-          <div className="w-16 h-3 rounded-full bg-[#3a3a3a] border border-[#555] shadow-lg flex items-center justify-center">
-            <div className="w-12 h-px bg-[#555]" />
+        {/* Handle */}
+        <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-30">
+          <div className="w-14 h-3 rounded-full bg-[#444] border border-[#555] shadow-lg">
+            <div className="w-full h-px bg-[#555] mt-1.5" />
           </div>
         </div>
       </motion.div>
+
+      {/* Remote control — positioned on right side of hero */}
+      <div className="absolute top-1/2 right-4 sm:right-8 lg:right-12 -translate-y-1/2 z-30">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2.2, duration: 0.6, ease: "easeOut" }}
+          className="hidden sm:flex flex-col items-center gap-3"
+        >
+          {/* Remote body */}
+          <div className="w-20 h-36 rounded-2xl bg-[#1a1a1a] border border-[#333] shadow-2xl flex flex-col items-center justify-between py-4 px-3 relative">
+            {/* LED indicator */}
+            <div className="flex items-center gap-1.5">
+              <div
+                className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
+                  isOpen ? "bg-accent shadow-[0_0_6px_rgba(63,116,47,0.8)]" : "bg-[#444]"
+                }`}
+              />
+              <span className="text-[9px] text-[#666] uppercase tracking-wider font-medium">
+                {isOpen ? "OPEN" : "CLOSED"}
+              </span>
+            </div>
+
+            {/* Main button */}
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-12 h-12 rounded-full bg-accent hover:bg-accent-600 active:scale-95 transition-all shadow-lg flex items-center justify-center"
+              aria-label={isOpen ? "Close garage door" : "Open garage door"}
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="down"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                  >
+                    <ChevronDown className="w-5 h-5 text-white" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="up"
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                  >
+                    <ChevronUp className="w-5 h-5 text-white" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
+            {/* Small secondary button */}
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-8 h-5 rounded-md bg-[#2a2a2a] hover:bg-[#333] active:bg-[#444] transition-colors border border-[#333]"
+              aria-label="Toggle garage door"
+            >
+              <div className="w-full h-px bg-[#444] mt-2" />
+            </button>
+          </div>
+
+          <span className="text-[10px] text-white/50 uppercase tracking-widest">
+            Remote
+          </span>
+        </motion.div>
+      </div>
     </div>
   );
 }
