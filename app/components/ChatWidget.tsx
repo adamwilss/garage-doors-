@@ -42,18 +42,36 @@ export function ChatWidget() {
     setInput("");
     setLoading(true);
 
-    // Placeholder: wire up OpenAI API here when key is available
-    // For now, echo a helpful placeholder response
-    setTimeout(() => {
+    try {
+      const chatHistory = messages
+        .filter((m) => m.role !== "assistant" || m.id !== 0)
+        .concat(userMsg)
+        .map((m) => ({ role: m.role, content: m.content }));
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: chatHistory }),
+      });
+
+      const data = await res.json();
+
       const assistantMsg: Message = {
         id: Date.now() + 1,
         role: "assistant",
-        content:
-          "Thanks for your message. Our team will review this and get back to you shortly. You can also call us directly for faster assistance.",
+        content: data.reply || data.error || "Sorry, something went wrong. Please try again.",
       };
       setMessages((prev) => [...prev, assistantMsg]);
+    } catch {
+      const errorMsg: Message = {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: "Sorry, I couldn't connect. Please try again later or call us directly.",
+      };
+      setMessages((prev) => [...prev, errorMsg]);
+    } finally {
       setLoading(false);
-    }, 1200);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

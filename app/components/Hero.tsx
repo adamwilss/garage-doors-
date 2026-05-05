@@ -79,7 +79,7 @@ export function Hero({
               const base = "inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors";
               const variants = {
                 primary: "bg-accent hover:bg-accent-600 text-white",
-                secondary: "bg-white hover:bg-[#f2f2f2] text-black shadow-lg shadow-black/30",
+                secondary: "bg-white hover:bg-[#f2f2f2] text-black shadow-lg shadow-black/30 dark:bg-[#1a1a1a] dark:hover:bg-[#2a2a2a] dark:text-white dark:shadow-black/50",
                 outline: "border-2 border-accent text-accent hover:bg-accent hover:text-white",
               };
               const isExternal = cta.href.startsWith("http") || cta.href.startsWith("tel:");
@@ -108,7 +108,7 @@ export function Hero({
                 </Link>
                 <a
                   href={business.phoneHref}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#f2f2f2] text-black rounded-md font-semibold text-base transition-colors shadow-lg shadow-black/30"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#f2f2f2] text-black dark:bg-[#1a1a1a] dark:hover:bg-[#2a2a2a] dark:text-white rounded-md font-semibold text-base transition-colors shadow-lg shadow-black/30 dark:shadow-black/50"
                 >
                   <Phone className="w-4 h-4" />
                   Call {business.phone}
