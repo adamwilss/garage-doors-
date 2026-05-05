@@ -1,8 +1,6 @@
 import OpenAI from "openai";
 import { NextRequest } from "next/server";
 
-export const runtime = "edge";
-
 const SYSTEM_PROMPT = `You are the helpful assistant for Quality Garage Doors Carlisle, a family-run business with 25 years of experience supplying, installing, repairing and automating garage doors and gates across Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders.
 
 Key facts:
@@ -20,11 +18,11 @@ Key facts:
 Be friendly, concise and helpful. If asked about something outside garage doors and gates, politely redirect to relevant topics. Always encourage getting a free quote via the contact page.`;
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.GARAGE;
+  const apiKey = process.env.garage || process.env.GARAGE || process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
     return new Response(
-      JSON.stringify({ error: "Chatbot is not configured. Please set the GARAGE environment variable." }),
+      JSON.stringify({ error: "Chatbot is not configured. Please set the garage environment variable in Vercel." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
