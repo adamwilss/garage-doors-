@@ -10,6 +10,7 @@ import {
 import { Hero } from "./components/Hero";
 import { TrustBar } from "./components/TrustBar";
 import { ServiceCard } from "./components/ServiceCard";
+import { ServiceComparison } from "./components/ServiceComparison";
 import { CTASection } from "./components/CTASection";
 import { ReviewCard } from "./components/ReviewCard";
 import { FAQAccordion } from "./components/FAQAccordion";
@@ -19,11 +20,10 @@ import { AnimatedDivider } from "./components/AnimatedDivider";
 import { AssembleText } from "./components/AssembleText";
 import { ProjectCarousel } from "./components/ProjectCarousel";
 import { FlipCard } from "./components/FlipCard";
+import { OrbitalRings } from "./components/OrbitalRings";
 import { WhyChooseCard } from "./components/WhyChooseCard";
-import ProcessTimeline from "./components/ProcessTimeline";
-import ExpandableCircle from "./components/ExpandableCircle";
 import Link from "next/link";
-import { ArrowRight, DoorOpen, Shield, Thermometer, Zap, Phone, MapPin, Star } from "lucide-react";
+import { ArrowRight, Star, DoorOpen, Shield, Thermometer, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
@@ -51,39 +51,42 @@ export default function HomePage() {
       <TrustBar />
       <AnimatedDivider />
 
-      {/* Services — Expandable Circle (unique interactive pattern) */}
-      <section className="py-16 lg:py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Services */}
+      <section className="py-16 lg:py-20 relative overflow-hidden">
+        <OrbitalRings />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                 <AssembleText text="Our Services" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                Tap a service to learn more about what we offer.
+                Everything from supply and installation to repairs, automation and gates.
               </p>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <ExpandableCircle />
+          <ScrollReveal stagger={0.12}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {services.map((service, i) => (
+                <div key={service.id}>
+                  <ServiceCard service={service} index={i} />
+                </div>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
       <AnimatedDivider />
 
-      {/* How It Works — Timeline (completely different visual language) */}
-      <section className="py-16 lg:py-24 bg-slate-50 dark:bg-[#0f0f0f]">
-        <ProcessTimeline />
-      </section>
-
-      <AnimatedDivider />
-
-      {/* Why Choose — Floating cards with organic blobs (another visual style) */}
-      <section className="py-16 lg:py-24 relative overflow-hidden">
-        {/* Animated organic blob background */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: "12s", animationDelay: "2s" }} />
+      {/* Why Choose */}
+      <section className="py-16 lg:py-20 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none opacity-50">
+          <div className="absolute inset-0 rounded-full border border-accent/10 animate-spin" style={{ animationDuration: "40s" }} />
+          <div className="absolute inset-12 rounded-full border border-accent/15 animate-spin" style={{ animationDuration: "30s", animationDirection: "reverse" }} />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
@@ -116,8 +119,8 @@ export default function HomePage() {
 
       <AnimatedDivider />
 
-      {/* Popular Types — Flip cards (interactive pattern) */}
-      <section className="py-16 lg:py-24">
+      {/* Popular Types */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -125,12 +128,15 @@ export default function HomePage() {
                 <AssembleText text="Popular Garage Door Types" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                We supply and install a wide range of garage doors. Tap a card to flip and learn more.
+                We supply and install a wide range of garage doors to suit every property and budget. Tap a card to flip and learn more.
               </p>
             </div>
           </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <ServiceComparison />
+          </ScrollReveal>
           <ScrollReveal stagger={0.1} delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               {garageDoorTypes.map((type, i) => {
                 const iconMap: Record<string, React.ReactNode> = {
                   "Sectional doors": <Thermometer className="w-8 h-8" />,
@@ -188,8 +194,8 @@ export default function HomePage() {
 
       <AnimatedDivider />
 
-      {/* Gates — Split layout with animated list (directional reveal) */}
-      <section className="py-16 lg:py-24 bg-slate-50 dark:bg-[#0f0f0f]">
+      {/* Gates */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <ScrollReveal direction="left" delay={0.1}>
@@ -238,8 +244,8 @@ export default function HomePage() {
 
       <AnimatedDivider />
 
-      {/* Recent Projects — Draggable carousel (interactive pattern) */}
-      <section className="py-16 lg:py-24">
+      {/* Recent Projects / Case Studies */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -291,22 +297,19 @@ export default function HomePage() {
 
       <AnimatedDivider />
 
-      {/* Reviews — Staggered with organic blobs (unique section style) */}
-      <section className="relative py-16 lg:py-24 overflow-hidden">
+      {/* Reviews */}
+      <section className="relative py-16 lg:py-20 overflow-hidden">
+        {/* Organic blob shapes */}
         <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-                <Star className="w-4 h-4 fill-accent" />
-                Excellent rating
-              </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                 <AssembleText text="What Our Customers Say" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
-                Based on {reviews.length} verified reviews.
+                Excellent rating based on {reviews.length} reviews.
               </p>
             </div>
           </ScrollReveal>
@@ -324,15 +327,11 @@ export default function HomePage() {
 
       <AnimatedDivider />
 
-      {/* Areas Covered — Map-style grid with hover effects (different visual style) */}
-      <section className="py-16 lg:py-24 bg-slate-50 dark:bg-[#0f0f0f]">
+      {/* Areas Covered */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-4">
-                <MapPin className="w-4 h-4" />
-                Serving the region
-              </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                 <AssembleText text="Areas We Cover" />
               </h2>
@@ -342,25 +341,23 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
           <ScrollReveal stagger={0.08}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {[
-                { name: "Carlisle", desc: "Our home city" },
-                { name: "Cumbria", desc: "County-wide coverage" },
-                { name: "Dumfries & Galloway", desc: "Southern Scotland" },
-                { name: "Penrith", desc: "Eden Valley area" },
-                { name: "Workington", desc: "West Cumbria coast" },
-                { name: "Whitehaven", desc: "Coastal coverage" },
-                { name: "Northumberland", desc: "Northern England" },
-                { name: "Scottish Borders", desc: "Cross-border service" },
+                "Carlisle",
+                "Cumbria",
+                "Dumfries and Galloway",
+                "Penrith",
+                "Workington",
+                "Whitehaven",
+                "Northumberland",
+                "Scottish Borders",
               ].map((area) => (
-                <div key={area.name}>
+                <div key={area}>
                   <Link
                     href="/areas-covered"
-                    className="group block p-6 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-xl text-center hover:border-accent hover:shadow-lg dark:hover:shadow-accent/5 transition-all duration-300 hover:-translate-y-1"
+                    className="inline-block px-4 py-2 bg-slate-100 dark:bg-[#1a1a1a] hover:bg-accent-light dark:hover:bg-accent/10 text-slate-700 dark:text-slate-300 hover:text-accent-700 dark:hover:text-accent rounded-full text-sm font-medium transition-colors border border-slate-200 dark:border-[#2a2a2a]"
                   >
-                    <MapPin className="w-5 h-5 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                    <span className="block font-semibold text-slate-900 dark:text-white">{area.name}</span>
-                    <span className="block text-xs text-slate-500 dark:text-slate-400 mt-1">{area.desc}</span>
+                    {area}
                   </Link>
                 </div>
               ))}
@@ -371,8 +368,8 @@ export default function HomePage() {
 
       <AnimatedDivider />
 
-      {/* FAQ — Clean centered layout (minimal pattern) */}
-      <section className="py-16 lg:py-24">
+      {/* FAQs */}
+      <section className="py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center mb-12">
