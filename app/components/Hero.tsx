@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { business } from "@/lib/content";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Phone, MessageCircle, FileText } from "lucide-react";
 import { AssembleText } from "./AssembleText";
 import { ParticleCanvas } from "./ParticleCanvas";
 import { GarageDoorReveal } from "./GarageDoorReveal";
+import { useRef } from "react";
 
 export type HeroVariant = "default" | "garage-doors" | "repairs" | "automation" | "gates" | "gallery" | "contact" | "content";
 
@@ -39,10 +40,22 @@ export function Hero({
   variant = "default",
 }: HeroProps) {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
   const bgClass = variantStyles[variant];
 
+  // Scroll-driven parallax: track progress through this section
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+
+  // Transform scroll progress into parallax values
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -50]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.6]);
+
   const heroContent = (
-    <section className={`relative text-slate-900 dark:text-white overflow-hidden ${bgClass}`}>
+    <section
+      ref={sectionRef}
+      className={`relative text-slate-900 dark:text-white overflow-hidden ${bgClass}`}
+    >
       {/* Particle canvas on relevant variants */}
       {(variant === "default" || variant === "garage-doors" || variant === "automation") && (
         <ParticleCanvas />
@@ -58,24 +71,56 @@ export function Hero({
         />
       )}
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+      {/* Scroll-driven gradient overlay for all variants */}
+      {!prefersReducedMotion ? (
+        <motion.div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            background: "radial-gradient(ellipse at 50% 120%, rgba(63,116,47,0.15) 0%, transparent 70%)",
+            opacity: overlayOpacity,
+          }}
+        />
+      ) : (
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            background: "radial-gradient(ellipse at 50% 120%, rgba(63,116,47,0.15) 0%, transparent 70%)",
+            opacity: 0.3,
+          }}
+        />
+      )}
+
+      {/* Hero content with scroll-driven parallax */}
+      <motion.div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28 z-20"
+        {...(prefersReducedMotion ? {} : { style: { opacity: contentOpacity, y: contentY } })}
+      >
         <div>
           <h1 className="text-xl sm:text-xl md:text-[1.75rem] lg:text-[2.2rem] xl:text-[2.8rem] 2xl:text-[3.25rem] font-extrabold tracking-tight leading-tight mb-6 text-balance sm:whitespace-nowrap">
             <AssembleText text={headline} />
           </h1>
           <motion.p
             className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl"
-            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.4 } })}
+            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 60 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, delay: 0.6 } })}
           >
             {subheadline}
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs with staggered cascade entrance */}
           <motion.div
             className="flex flex-wrap gap-4 max-w-2xl"
-            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.6 } })}
+            {...(prefersReducedMotion
+              ? {}
+              : {
+                  initial: "hidden",
+                  animate: "visible",
+                  variants: {
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.15 } },
+                  },
+                })}
           >
-            {ctas?.map((cta) => {
+            {ctas?.map((cta, index) => {
               const base = "inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-base transition-colors";
               const variants = {
                 primary: "bg-accent hover:bg-accent-600 text-white",
@@ -86,33 +131,63 @@ export function Hero({
               const Tag = isExternal ? "a" : Link;
               const props = isExternal ? { href: cta.href } : { href: cta.href };
               return (
-                <Tag
+                <motion.span
                   key={cta.label}
-                  {...props}
-                  className={`${base} ${variants[cta.variant]}`}
+                  {...(prefersReducedMotion
+                    ? {}
+                    : {
+                        initial: { opacity: 0, y: 30, scale: 0.9 },
+                        animate: { opacity: 1, y: 0, scale: 1 },
+                        transition: { duration: 0.5, delay: 0.8 + index * 0.15, ease: "easeOut" },
+                      })}
                 >
-                  {cta.label.includes("Call") && <Phone className="w-4 h-4" />}
-                  {cta.label.includes("WhatsApp") && <MessageCircle className="w-4 h-4" />}
-                  {cta.label.includes("Quote") && <FileText className="w-4 h-4" />}
-                  {cta.label}
-                </Tag>
+                  <Tag
+                    {...props}
+                    className={`${base} ${variants[cta.variant]}`}
+                  >
+                    {cta.label.includes("Call") && <Phone className="w-4 h-4" />}
+                    {cta.label.includes("WhatsApp") && <MessageCircle className="w-4 h-4" />}
+                    {cta.label.includes("Quote") && <FileText className="w-4 h-4" />}
+                    {cta.label}
+                  </Tag>
+                </motion.span>
               );
             }) || (
               <>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-600 text-white rounded-md font-semibold text-base transition-colors"
+                <motion.span
+                  {...(prefersReducedMotion
+                    ? {}
+                    : {
+                        initial: { opacity: 0, y: 30, scale: 0.9 },
+                        animate: { opacity: 1, y: 0, scale: 1 },
+                        transition: { duration: 0.5, delay: 0.8, ease: "easeOut" },
+                      })}
                 >
-                  <FileText className="w-4 h-4" />
-                  Get a free quote
-                </Link>
-                <a
-                  href={business.phoneHref}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#f2f2f2] text-black dark:bg-[#1a1a1a] dark:hover:bg-[#2a2a2a] dark:text-white rounded-md font-semibold text-base transition-colors shadow-lg shadow-black/30 dark:shadow-black/50"
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-600 text-white rounded-md font-semibold text-base transition-colors"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Get a free quote
+                  </Link>
+                </motion.span>
+                <motion.span
+                  {...(prefersReducedMotion
+                    ? {}
+                    : {
+                        initial: { opacity: 0, y: 30, scale: 0.9 },
+                        animate: { opacity: 1, y: 0, scale: 1 },
+                        transition: { duration: 0.5, delay: 0.95, ease: "easeOut" },
+                      })}
                 >
-                  <Phone className="w-4 h-4" />
-                  Call {business.phone}
-                </a>
+                  <a
+                    href={business.phoneHref}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#f2f2f2] text-black dark:bg-[#1a1a1a] dark:hover:bg-[#2a2a2a] dark:text-white rounded-md font-semibold text-base transition-colors shadow-lg shadow-black/30 dark:shadow-black/50"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call {business.phone}
+                  </a>
+                </motion.span>
               </>
             )}
           </motion.div>
@@ -122,7 +197,7 @@ export function Hero({
         {showTrustBar && trustPoints && (
           <motion.div
             className="mt-12 pt-8 border-t border-white/10"
-            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 0.8 } })}
+            {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, delay: 1.1 } })}
           >
             <div className="flex flex-wrap gap-3">
               {trustPoints.map((point) => (
@@ -136,7 +211,7 @@ export function Hero({
             </div>
           </motion.div>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 
