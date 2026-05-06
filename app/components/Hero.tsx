@@ -93,7 +93,7 @@ export function Hero({
       {/* Hero content with scroll-driven parallax */}
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28 z-20"
-        {...(prefersReducedMotion ? {} : { style: { opacity: contentOpacity, y: contentY } })}
+        {...(prefersReducedMotion ? {} : { style: { opacity: contentOpacity, y: contentY, willChange: "transform, opacity" } })}
       >
         <div>
           <h1 className="text-xl sm:text-xl md:text-[1.75rem] lg:text-[2.2rem] xl:text-[2.8rem] 2xl:text-[3.25rem] font-extrabold tracking-tight leading-tight mb-6 text-balance sm:whitespace-nowrap">

@@ -7,7 +7,7 @@ const LINE_EASE = [0.33, 1, 0.68, 1] as const;
 
 export function AnimatedDivider({ className = "" }: { className?: string }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 
 export function TiltCard({
   children,
@@ -17,6 +17,11 @@ export function TiltCard({
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 });
   const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -35,6 +40,15 @@ export function TiltCard({
     setGlare({ ...glare, opacity: 0 });
   };
 
+  // On touch devices, render a plain div without tilt/glare
+  if (isTouchDevice) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <motion.div
       ref={ref}
@@ -42,7 +56,7 @@ export function TiltCard({
       onMouseLeave={handleMouseLeave}
       animate={{ rotateX: transform.rotateX, rotateY: transform.rotateY }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      style={{ perspective: 1000 }}
+      style={{ perspective: 1000, willChange: "transform" }}
       className={`relative ${className}`}
     >
       {children}

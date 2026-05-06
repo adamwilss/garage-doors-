@@ -300,8 +300,8 @@ export default function HomePage() {
       {/* Reviews */}
       <section className="relative py-16 lg:py-20 overflow-hidden">
         {/* Organic blob shapes */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-xl pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">

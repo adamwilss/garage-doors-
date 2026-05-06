@@ -15,6 +15,7 @@ export function Footer() {
                 muted
                 playsInline
                 loop
+                preload="none"
                 className="w-full h-full object-contain"
               />
             </div>

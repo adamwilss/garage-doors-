@@ -68,6 +68,7 @@ function pickType(): ParticleType {
 export function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -81,6 +82,12 @@ export function ParticleCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const isMobile = window.innerWidth < 768;
+    const maxParticles = isMobile ? 20 : 50;
+    const frameSkip = isMobile ? 3 : 2;
+    const maxConnectionDist = isMobile ? 80 : 120;
+    const maxConnections = isMobile ? 30 : Infinity;
+
     let width = 0;
     let height = 0;
     const particles: Particle[] = [];
@@ -91,20 +98,31 @@ export function ParticleCanvas() {
       "rgba(40,89,31,",
     ];
 
+    // IntersectionObserver to pause animation when off-screen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 },
+    );
+    observer.observe(canvas);
+
     function resize() {
       if (!canvas || !ctx) return;
       const rect = canvas.parentElement?.getBoundingClientRect();
       if (!rect) return;
       width = rect.width;
       height = rect.height;
-      canvas.width = width * window.devicePixelRatio;
-      canvas.height = height * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const dpr = isMobile ? 1 : window.devicePixelRatio;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     function createParticles() {
       particles.length = 0;
-      const count = Math.min(50, Math.floor((width * height) / 25000));
+      const area = width * height;
+      const count = Math.min(maxParticles, Math.floor(area / (isMobile ? 40000 : 25000)));
       for (let i = 0; i < count; i++) {
         const type = pickType();
         particles.push({
@@ -136,9 +154,16 @@ export function ParticleCanvas() {
     let frameCount = 0;
     function animate() {
       if (!ctx || !canvas) return;
+
+      // Pause when off-screen
+      if (!isVisibleRef.current) {
+        animRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       frameCount++;
-      // Render every 2nd frame for performance on low-end
-      if (frameCount % 2 !== 0) {
+      // Skip frames for performance
+      if (frameCount % frameSkip !== 0) {
         animRef.current = requestAnimationFrame(animate);
         return;
       }
@@ -156,21 +181,28 @@ export function ParticleCanvas() {
         if (p.y > height) p.y = 0;
 
         if (p.type === "circle") {
-          // Glowing circle with radial gradient
-          const gradient = ctx.createRadialGradient(
-            p.x,
-            p.y,
-            0,
-            p.x,
-            p.y,
-            p.size * 2.5,
-          );
-          gradient.addColorStop(0, p.color + p.alpha + ")");
-          gradient.addColorStop(1, "transparent");
-          ctx.fillStyle = gradient;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
-          ctx.fill();
+          // On mobile, use simple solid fill instead of radial gradient
+          if (isMobile) {
+            ctx.fillStyle = `${p.color}${p.alpha})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            const gradient = ctx.createRadialGradient(
+              p.x,
+              p.y,
+              0,
+              p.x,
+              p.y,
+              p.size * 2.5,
+            );
+            gradient.addColorStop(0, p.color + p.alpha + ")");
+            gradient.addColorStop(1, "transparent");
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
         } else if (p.type === "star") {
           ctx.fillStyle = `${p.color}${p.alpha})`;
           drawStar(ctx, p.x, p.y, p.size, p.rotation);
@@ -181,18 +213,22 @@ export function ParticleCanvas() {
       }
 
       // Connect nearby particles with faint lines
+      let connectionCount = 0;
       for (let i = 0; i < particles.length; i++) {
+        if (connectionCount >= maxConnections) break;
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < maxConnectionDist * maxConnectionDist) {
+            const dist = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(63,116,47,${0.06 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(63,116,47,${0.06 * (1 - dist / maxConnectionDist)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
+            connectionCount++;
           }
         }
       }
@@ -204,15 +240,21 @@ export function ParticleCanvas() {
     createParticles();
     animate();
 
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
-      resize();
-      createParticles();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        createParticles();
+      }, 200);
     };
     window.addEventListener("resize", onResize);
 
     return () => {
       window.removeEventListener("resize", onResize);
       cancelAnimationFrame(animRef.current);
+      observer.disconnect();
+      clearTimeout(resizeTimer);
     };
   }, []);
 
@@ -221,6 +263,7 @@ export function ParticleCanvas() {
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
       aria-hidden="true"
+      style={{ willChange: "transform" }}
     />
   );
 }

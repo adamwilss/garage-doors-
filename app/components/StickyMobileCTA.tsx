@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function StickyMobileCTA() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-[#333333] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.2)] border-t border-slate-200 dark:border-[#444444]">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-[#333333] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.2)] border-t border-slate-200 dark:border-[#444444]" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
       <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-[#444444]">
         <a
           href={business.phoneHref}

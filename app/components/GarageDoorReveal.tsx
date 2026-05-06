@@ -33,6 +33,7 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
         initial={{ y: "0%" }}
         animate={{ y: isOpen ? "-100%" : "0%" }}
         transition={{ duration: 1.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+        style={{ willChange: "transform" }}
       >
         {/* Frame top */}
         <div className="h-2 bg-[#ccc] dark:bg-[#111] shrink-0" />

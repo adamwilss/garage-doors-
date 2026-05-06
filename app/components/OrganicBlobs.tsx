@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const blobRadii = [
   "60% 40% 50% 50% / 50% 60% 40% 50%",
@@ -15,12 +16,24 @@ const blobConfigs = [
 ];
 
 export function OrganicBlobs() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  if (!isDesktop) return null;
+
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
       {blobConfigs.map((blob, i) => (
         <motion.div
           key={i}
-          className="absolute blur-3xl"
+          className="absolute blur-xl"
           style={{
             borderRadius: blobRadii[i % blobRadii.length],
             width: blob.size,
@@ -30,6 +43,7 @@ export function OrganicBlobs() {
             left: blob.left,
             right: blob.right,
             bottom: blob.bottom,
+            willChange: "transform",
           }}
           animate={{
             x: [0, 30, -20, 10, 0],

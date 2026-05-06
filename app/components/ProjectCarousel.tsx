@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -105,10 +106,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <Link href="/case-studies" className="group block">
         <div className="relative aspect-video bg-slate-200 dark:bg-[#222] rounded-xl overflow-hidden mb-4">
           {project.image ? (
-            <img
+            <Image
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              fill
+              sizes="(max-width: 640px) 320px, 380px"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-slate-500 dark:text-slate-600 text-sm">

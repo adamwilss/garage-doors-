@@ -55,15 +55,11 @@ export function ScrollReveal({
       hidden: {
         opacity: 0,
         ...directionOffset[direction],
-        scale: 0.95,
-        filter: "blur(4px)",
       },
       visible: {
         opacity: 1,
         x: 0,
         y: 0,
-        scale: 1,
-        filter: "blur(0px)",
         transition: {
           duration,
           delay,
@@ -77,14 +73,10 @@ export function ScrollReveal({
       hidden: {
         opacity: 0,
         y: 30,
-        scale: 0.95,
-        filter: "blur(4px)",
       },
       visible: {
         opacity: 1,
         y: 0,
-        scale: 1,
-        filter: "blur(0px)",
         transition: {
           duration,
           ease: PREMIUM_EASE,
@@ -99,6 +91,7 @@ export function ScrollReveal({
         initial="hidden"
         whileInView="visible"
         viewport={{ once, margin: "-50px" }}
+        style={{ willChange: "transform, opacity" }}
       >
         {typeof children === "object" && Array.isArray(children)
           ? children.map((child, i) => (
@@ -117,18 +110,15 @@ export function ScrollReveal({
       initial={{
         opacity: 0,
         ...directionOffset[direction],
-        scale: 0.95,
-        filter: "blur(4px)",
       }}
       whileInView={{
         opacity: 1,
         x: 0,
         y: 0,
-        scale: 1,
-        filter: "blur(0px)",
       }}
       viewport={{ once, margin: "-50px" }}
       transition={{ duration, delay, ease: PREMIUM_EASE }}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>

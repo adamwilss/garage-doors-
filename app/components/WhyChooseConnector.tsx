@@ -5,7 +5,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 
 export function WhyChooseConnector() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const prefersReducedMotion = useReducedMotion();
 
   return (

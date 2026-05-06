@@ -56,7 +56,7 @@ export default function RootLayout({
           <ScrollProgress />
           <SEOJsonLd type="LocalBusiness" />
           <Header />
-          <main className="flex-1 relative z-10">{children}</main>
+          <main className="flex-1 relative z-10 pb-16 lg:pb-0">{children}</main>
           <Footer />
           <StickyMobileCTA />
           <ChatWidget />
