@@ -19,14 +19,14 @@ interface HeroProps {
 }
 
 const variantStyles: Record<HeroVariant, string> = {
-  default: "bg-slate-100",
-  "garage-doors": "bg-slate-100",
-  repairs: "bg-slate-100",
-  automation: "bg-slate-100",
-  gates: "bg-slate-100",
-  gallery: "bg-slate-100",
-  contact: "bg-slate-100",
-  content: "bg-slate-100",
+  default: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  "garage-doors": "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  repairs: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  automation: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  gates: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  gallery: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  contact: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
+  content: "bg-gradient-to-br from-white via-slate-50 to-slate-100",
 };
 
 export function Hero({
@@ -44,6 +44,19 @@ export function Hero({
     <section
       className={`relative text-slate-900 overflow-hidden ${bgClass}`}
     >
+      {/* Decorative radial glow */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-urgent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+
+      {/* Subtle grid texture */}
+      <div
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(18,60,124,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(18,60,124,0.3) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
       {/* Static accent line at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent" />
 

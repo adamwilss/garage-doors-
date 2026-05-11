@@ -119,7 +119,7 @@ export function Header() {
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center px-4 py-2.5 bg-accent hover:bg-accent-600 text-white text-sm font-semibold rounded-md transition-colors"
+              className="inline-flex items-center px-4 py-2.5 bg-urgent hover:bg-urgent-600 text-white text-sm font-semibold rounded-md transition-colors shadow-md"
             >
               Get a Free Quote
             </Link>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import { MessageCircle, X, Send, Bot, User, Maximize2, ArrowLeft, MapPin, Phone, FileText } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Maximize2, ArrowLeft, Phone, FileText } from "lucide-react";
 import Link from "next/link";
 
 interface Message {
@@ -17,7 +17,6 @@ const WELCOME_MESSAGE: Message = {
     "Hello! I'm Garry, the assistant for Quality Garage Doors Carlisle. I can help with questions about garage doors, gates, repairs and automation in Carlisle and the surrounding area. What would you like to know?",
 };
 
-// Quick links shown below the input
 const QUICK_LINKS = [
   { label: "Services", href: "/garage-doors", icon: null },
   { label: "Repairs", href: "/garage-door-repairs", icon: null },
@@ -25,7 +24,6 @@ const QUICK_LINKS = [
   { label: "Call Us", href: "tel:01228532495", icon: Phone },
 ];
 
-/** Parse markdown-style links [text](href) into React elements */
 function LinkifiedText({ text, fullPage }: { text: string; fullPage?: boolean }) {
   const parts = useMemo(() => {
     const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -43,7 +41,7 @@ function LinkifiedText({ text, fullPage }: { text: string; fullPage?: boolean })
           <a
             key={`${match.index}-link`}
             href={href}
-            className="underline font-semibold hover:opacity-80"
+            className="underline font-semibold text-accent hover:opacity-80"
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
           >
@@ -55,7 +53,7 @@ function LinkifiedText({ text, fullPage }: { text: string; fullPage?: boolean })
           <Link
             key={`${match.index}-link`}
             href={href}
-            className="underline font-semibold hover:opacity-80"
+            className="underline font-semibold text-accent hover:opacity-80"
           >
             {linkText}
           </Link>
@@ -110,10 +108,9 @@ function ChatPanel({
 
   return (
     <>
-      {/* Messages */}
       <div
         ref={scrollRef}
-        className={`flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 ${
+        className={`flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 bg-slate-50 dark:bg-[#111111] ${
           fullPage ? "" : "min-h-[280px] max-h-[400px]"
         }`}
       >
@@ -123,7 +120,7 @@ function ChatPanel({
             className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
             {msg.role === "assistant" && (
-              <div className="w-9 h-9 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-9 h-9 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0 mt-0.5">
                 <Bot className="w-5 h-5" />
               </div>
             )}
@@ -131,13 +128,13 @@ function ChatPanel({
               className={`px-4 py-3 rounded-2xl max-w-[85%] leading-relaxed ${
                 msg.role === "user"
                   ? "bg-accent text-white rounded-br-sm"
-                  : "bg-slate-100 dark:bg-[#222] text-slate-800 dark:text-slate-200 rounded-bl-sm"
+                  : "bg-white dark:bg-[#1a1a1a] text-slate-800 dark:text-slate-100 rounded-bl-sm shadow-sm dark:shadow-none border border-slate-200 dark:border-[#2a2a2a]"
               }`}
             >
               <LinkifiedText text={msg.content} fullPage={fullPage} />
             </div>
             {msg.role === "user" && (
-              <div className="w-9 h-9 rounded-full bg-slate-200 dark:bg-[#333] text-slate-600 dark:text-slate-400 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-9 h-9 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0 mt-0.5">
                 <User className="w-5 h-5" />
               </div>
             )}
@@ -145,23 +142,21 @@ function ChatPanel({
         ))}
         {loading && (
           <div className="flex gap-3">
-            <div className="w-9 h-9 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0">
+            <div className="w-9 h-9 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0">
               <Bot className="w-5 h-5" />
             </div>
-            <div className="bg-slate-100 dark:bg-[#222] rounded-2xl rounded-bl-sm px-4 py-3">
+            <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#2a2a2a] rounded-2xl rounded-bl-sm px-4 py-3">
               <div className="flex gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "0ms" }} />
-                <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "150ms" }} />
-                <span className="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+                <span className="w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 animate-bounce" style={{ animationDelay: "0ms" }} />
+                <span className="w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 animate-bounce" style={{ animationDelay: "150ms" }} />
+                <span className="w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-600 animate-bounce" style={{ animationDelay: "300ms" }} />
               </div>
             </div>
           </div>
         )}
       </div>
 
-      {/* Input + Quick links */}
-      <div className="px-3 sm:px-6 py-3 sm:py-4 border-t border-slate-200 dark:border-[#2a2a2a] shrink-0">
-        {/* Quick links */}
+      <div className="px-3 sm:px-6 py-3 sm:py-4 border-t border-slate-200 dark:border-[#2a2a2a] bg-white dark:bg-[#141414] shrink-0">
         <div className="flex flex-wrap gap-2 mb-3">
           {QUICK_LINKS.map((link) => {
             const isExternal = link.href.startsWith("http") || link.href.startsWith("tel:");
@@ -171,7 +166,7 @@ function ChatPanel({
               <Tag
                 key={link.label}
                 {...props}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-light/60 hover:bg-accent-light text-accent text-xs font-medium rounded-full transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-light/80 dark:bg-accent/20 hover:bg-accent-light dark:hover:bg-accent/30 text-accent dark:text-[#7aaef7] text-xs font-medium rounded-full transition-colors"
               >
                 {link.icon && <link.icon className="w-3 h-3" />}
                 {link.label}
@@ -186,7 +181,7 @@ function ChatPanel({
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask Garry anything..."
-            className={`flex-1 px-4 py-3 rounded-xl border border-slate-300 dark:border-[#333] bg-white dark:bg-[#0f0f0f] text-slate-900 dark:text-white focus:ring-2 focus:ring-accent focus:border-accent outline-none ${
+            className={`flex-1 px-4 py-3 rounded-xl border border-slate-300 dark:border-[#333] bg-white dark:bg-[#0f0f0f] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-accent focus:border-accent outline-none ${
               fullPage ? "text-base" : "text-sm"
             }`}
           />
