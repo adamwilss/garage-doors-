@@ -9,6 +9,7 @@ import {
 } from "@/lib/content";
 import { Hero } from "./components/Hero";
 import { TrustBar } from "./components/TrustBar";
+import { CouponSection } from "./components/CouponSection";
 import { ServiceCard } from "./components/ServiceCard";
 import { ServiceComparison } from "./components/ServiceComparison";
 import { CTASection } from "./components/CTASection";
@@ -16,17 +17,15 @@ import { ReviewCard } from "./components/ReviewCard";
 import { FAQAccordion } from "./components/FAQAccordion";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { SEOJsonLd } from "./components/SEOJsonLd";
-import { AnimatedDivider } from "./components/AnimatedDivider";
 import { AssembleText } from "./components/AssembleText";
 import { ProjectCarousel } from "./components/ProjectCarousel";
 import { FlipCard } from "./components/FlipCard";
-import { OrbitalRings } from "./components/OrbitalRings";
 import { WhyChooseCard } from "./components/WhyChooseCard";
 import Link from "next/link";
 import { ArrowRight, Star, DoorOpen, Shield, Thermometer, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
+  title: "Garage Door Repair & Installation in Carlisle | Quality Garage Doors Carlisle",
   description:
     "Family run specialists supplying, installing, repairing and automating garage doors and gates across Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders. 25 years experience. Free quotes.",
 };
@@ -38,8 +37,8 @@ export default function HomePage() {
       <SEOJsonLd type="Review" />
 
       <Hero
-        headline="Garage Doors and Automated Gates in Carlisle"
-        subheadline="Family run specialists supplying, installing, repairing and automating garage doors and gates across Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders."
+        headline="Garage Door Repair & Installation in Carlisle"
+        subheadline="Garage door stuck? Broken spring? Door off track? We provide fast, affordable repair and installation across Carlisle and the surrounding region. Same day service available."
         ctas={[
           { label: "Get a free quote", href: "/contact", variant: "primary" },
           { label: "WhatsApp", href: business.whatsAppHref, variant: "outline" },
@@ -49,13 +48,11 @@ export default function HomePage() {
       />
 
       <TrustBar />
-      <AnimatedDivider />
+      <CouponSection />
 
       {/* Services */}
-      <section className="py-16 lg:py-20 relative overflow-hidden">
-        <OrbitalRings />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
@@ -78,17 +75,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Why Choose */}
-      <section className="py-16 lg:py-20 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none opacity-50">
-          <div className="absolute inset-0 rounded-full border border-accent/10 animate-spin" style={{ animationDuration: "40s" }} />
-          <div className="absolute inset-12 rounded-full border border-accent/15 animate-spin" style={{ animationDuration: "30s", animationDirection: "reverse" }} />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
@@ -116,8 +105,6 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Popular Types */}
       <section className="py-16 lg:py-20">
@@ -192,8 +179,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Gates */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,8 +226,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Recent Projects / Case Studies */}
       <section className="py-16 lg:py-20">
@@ -295,14 +278,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Reviews */}
-      <section className="relative py-16 lg:py-20 overflow-hidden">
-        {/* Organic blob shapes */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-[60%_40%_50%_50%_/_50%_60%_40%_50%] bg-accent/5 blur-xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] bg-accent/5 blur-xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
@@ -324,8 +302,6 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Areas Covered */}
       <section className="py-16 lg:py-20">
@@ -365,8 +341,6 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* FAQs */}
       <section className="py-16 lg:py-20">

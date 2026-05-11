@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Hero } from "../components/Hero";
 import { GalleryContent } from "./GalleryContent";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 import { OrbitalRings } from "../components/OrbitalRings";
 
 export const metadata: Metadata = {
@@ -22,8 +21,6 @@ export default function GalleryPage() {
           { label: "WhatsApp", href: "https://wa.me/447519021053", variant: "outline" },
         ]}
       />
-
-      <AnimatedDivider />
 
       <section className="py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none opacity-30">

@@ -3,7 +3,6 @@ import { brochures } from "@/lib/content";
 import { Hero } from "../components/Hero";
 import { BrochureCard } from "../components/BrochureCard";
 import { ScrollReveal } from "../components/ScrollReveal";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 
 export const metadata: Metadata = {
   title: "Brochures | Alutech and Hormann Garage Doors | Quality Garage Doors Carlisle",
@@ -19,8 +18,6 @@ export default function BrochuresPage() {
         headline="Product Brochures"
         subheadline="Download brochures to explore garage door styles, colours, finishes and automation options before your free survey."
       />
-
-      <AnimatedDivider />
 
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

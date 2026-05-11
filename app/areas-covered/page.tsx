@@ -4,7 +4,6 @@ import { Hero } from "../components/Hero";
 import { AreaLinks } from "../components/AreaLinks";
 import { CTASection } from "../components/CTASection";
 import { ScrollReveal } from "../components/ScrollReveal";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 
 export const metadata: Metadata = {
   title: "Areas Covered | Garage Doors Carlisle, Cumbria, Borders | Quality Garage Doors Carlisle",
@@ -20,8 +19,6 @@ export default function AreasCoveredPage() {
         headline="Areas We Cover"
         subheadline="Based in Carlisle, we travel across the region to supply, install, repair and automate garage doors and gates."
       />
-
-      <AnimatedDivider />
 
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,8 +38,6 @@ export default function AreasCoveredPage() {
           <AreaLinks areas={areas} />
         </div>
       </section>
-
-      <AnimatedDivider />
 
       <CTASection
         headline="Not Sure If We Cover Your Area?"

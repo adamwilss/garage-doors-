@@ -4,7 +4,6 @@ import { Hero } from "../components/Hero";
 import { CTASection } from "../components/CTASection";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { SEOJsonLd } from "../components/SEOJsonLd";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 import { Zap, Phone, MessageCircle, FileText } from "lucide-react";
 import Link from "next/link";
 
@@ -26,10 +25,8 @@ export default function GarageDoorAutomationPage() {
       <Hero
         variant="automation"
         headline="Garage Door Automation in Carlisle"
-        subheadline="Convert your existing manual garage door to convenient, secure electric operation. Remote controls, keypads, safety systems and battery backup options available."
+        subheadline="Convert your manual garage door to electric. Remote controls, keypads and safety systems installed."
       />
-
-      <AnimatedDivider />
 
       {/* Urgent CTAs */}
       <section className="py-10 bg-accent">
@@ -62,8 +59,6 @@ export default function GarageDoorAutomationPage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Features */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,8 +88,6 @@ export default function GarageDoorAutomationPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Benefits */}
       <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
@@ -140,8 +133,6 @@ export default function GarageDoorAutomationPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       <CTASection
         headline="Make Your Garage Door Electric"

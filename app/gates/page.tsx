@@ -4,7 +4,6 @@ import { Hero } from "../components/Hero";
 import { CTASection } from "../components/CTASection";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { SEOJsonLd } from "../components/SEOJsonLd";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 import { Fence, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -26,10 +25,8 @@ export default function GatesPage() {
       <Hero
         variant="gates"
         headline="Automated and Manual Gates in Carlisle"
-        subheadline="Design, manufacture and installation of residential and commercial automated and manual gate systems across Carlisle, Cumbria, Northumberland and the Scottish Borders."
+        subheadline="Automated and manual gates for driveways and commercial properties. Sliding, swing and cantilever designs."
       />
-
-      <AnimatedDivider />
 
       {/* Gate types */}
       <section className="py-16 lg:py-20">
@@ -60,8 +57,6 @@ export default function GatesPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Why gates */}
       <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
@@ -116,8 +111,6 @@ export default function GatesPage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Service areas */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -151,8 +144,6 @@ export default function GatesPage() {
           </ScrollReveal>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       <CTASection
         headline="Get a Gate Quote"

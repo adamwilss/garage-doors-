@@ -11,7 +11,7 @@ export const business = {
   address: "28 Esk Rd, Carlisle CA3 0HW",
   established: 1999,
   yearsExperience: 25,
-  tagline: "Family run specialists supplying, installing, repairing and automating garage doors and gates",
+  tagline: "Fast, affordable garage door repair and installation across Carlisle and the surrounding region. Same day service available.",
   serviceArea:
     "Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders",
   openingHours: [
@@ -20,12 +20,12 @@ export const business = {
     { day: "Sunday", hours: "Closed" },
   ],
   trustPoints: [
-    "25 years experience",
-    "Family run",
-    "Free quotes",
-    "Fully guaranteed",
-    "AESIF member",
-    "Garage doors and gates",
+    "Same day service available",
+    "Licensed & fully insured",
+    "Free in-home estimates",
+    "20+ years experience",
+    "Senior discounts",
+    "All major payment methods",
   ],
 };
 
@@ -47,7 +47,7 @@ export const services = [
     id: "garage-doors",
     title: "Garage Doors",
     description:
-      "Supply and installation of sectional, roller shutter, up and over, insulated, manual and automated garage doors from Alutech and Hormann.",
+      "New garage door supply and installation. Sectional, roller, up and over and automated doors fitted with professional installation and guarantee.",
     href: "/garage-doors",
     icon: "door",
   },
@@ -55,7 +55,7 @@ export const services = [
     id: "repairs",
     title: "Garage Door Repairs",
     description:
-      "Fast, reliable repairs for broken springs, faulty motors, remote faults, stuck doors, damaged panels, cables and track issues.",
+      "Garage door stuck? Broken spring? Door off track? Fast, reliable repairs for all makes and models. We fix it today.",
     href: "/garage-door-repairs",
     icon: "wrench",
   },
@@ -63,7 +63,7 @@ export const services = [
     id: "automation",
     title: "Garage Door Automation",
     description:
-      "Convert existing manual garage doors to electric operation with remote handsets, keypads, safety systems and battery backup.",
+      "Convert your manual garage door to electric. Remote controls, keypads and safety systems installed.",
     href: "/garage-door-automation",
     icon: "zap",
   },
@@ -71,7 +71,7 @@ export const services = [
     id: "gates",
     title: "Gates",
     description:
-      "Automated and manual gates for residential and commercial properties. Sliding, swing and cantilever gates in steel, aluminium and timber.",
+      "Automated and manual gates for driveways and commercial properties. Sliding, swing and cantilever designs.",
     href: "/gates",
     icon: "gate",
   },
@@ -495,3 +495,46 @@ export const alutechContent = {
   avanti:
     "Quiet, powerful and suitable for existing manual tracked garage doors. The Alutech Avanti system is ideal for retrofit automation projects where reliability matters.",
 };
+
+export const coupons = [
+  {
+    id: "new-door-combo",
+    title: "$200 OFF",
+    subtitle: "NEW GARAGE DOOR + MOTOR COMBO",
+    description: "Save $200 when you purchase a new garage door with motor installation.",
+    code: "COMBO200",
+    disclaimer: "Cannot be combined with other offers. Expires end of month.",
+  },
+  {
+    id: "new-door-only",
+    title: "$100 OFF",
+    subtitle: "NEW GARAGE DOOR ONLY",
+    description: "Save $100 on any new garage door installation.",
+    code: "DOOR100",
+    disclaimer: "Excludes combo offers. One per household.",
+  },
+  {
+    id: "repair-discount",
+    title: "$25 OFF",
+    subtitle: "GARAGE DOOR REPAIR",
+    description: "Save $25 on any garage door repair service call.",
+    code: "REPAIR25",
+    disclaimer: "Minimum service charge applies. Cannot be combined.",
+  },
+  {
+    id: "spring-replacement",
+    title: "$50 OFF",
+    subtitle: "SPRING REPLACEMENT",
+    description: "Save $50 on broken spring replacement service.",
+    code: "SPRING50",
+    disclaimer: "Single spring only. Call for dual spring pricing.",
+  },
+  {
+    id: "opener-install",
+    title: "$75 OFF",
+    subtitle: "LIFTMASTER OPENER INSTALL",
+    description: "Save $75 on LiftMaster garage door opener installation.",
+    code: "OPENER75",
+    disclaimer: "Opener purchase required. Professional install included.",
+  },
+];

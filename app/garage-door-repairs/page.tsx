@@ -4,7 +4,6 @@ import { Hero } from "../components/Hero";
 import { CTASection } from "../components/CTASection";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { SEOJsonLd } from "../components/SEOJsonLd";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 import { Phone, MessageCircle, FileText, AlertTriangle, Wrench, Clock, Shield } from "lucide-react";
 import Link from "next/link";
 
@@ -26,10 +25,8 @@ export default function GarageDoorRepairsPage() {
       <Hero
         variant="repairs"
         headline="Garage Door Repairs in Carlisle"
-        subheadline="Fast, reliable repairs for broken springs, faulty motors, remote control faults, stuck doors and more. We repair all makes and models across Carlisle and the surrounding region."
+        subheadline="Garage door stuck? Broken spring? Door off track? Fast, reliable repairs for all makes and models. We fix it today."
       />
-
-      <AnimatedDivider />
 
       {/* Urgent CTAs */}
       <section className="py-10 bg-accent">
@@ -62,8 +59,6 @@ export default function GarageDoorRepairsPage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Issues grid */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,8 +87,6 @@ export default function GarageDoorRepairsPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Repair vs replace */}
       <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
@@ -149,8 +142,6 @@ export default function GarageDoorRepairsPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       <CTASection
         headline="Book Your Garage Door Repair"

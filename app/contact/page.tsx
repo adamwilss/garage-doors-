@@ -3,7 +3,6 @@ import { business } from "@/lib/content";
 import { Hero } from "../components/Hero";
 import { ContactForm } from "../components/ContactForm";
 import { ScrollReveal } from "../components/ScrollReveal";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,8 +19,6 @@ export default function ContactPage() {
         headline="Get in Touch"
         subheadline="Call, WhatsApp or send us a message. We offer free site visits and quotations across Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders."
       />
-
-      <AnimatedDivider />
 
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

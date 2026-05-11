@@ -5,7 +5,6 @@ import { ServiceComparison } from "../components/ServiceComparison";
 import { CTASection } from "../components/CTASection";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { SEOJsonLd } from "../components/SEOJsonLd";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -29,8 +28,6 @@ export default function GarageDoorsPage() {
         subheadline="Sectional, roller shutter, up and over, insulated, manual and electric garage doors supplied and installed across Carlisle, Cumbria and the surrounding region."
       />
 
-      <AnimatedDivider />
-
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -46,8 +43,6 @@ export default function GarageDoorsPage() {
           <ServiceComparison />
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Types detail */}
       <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
@@ -73,8 +68,6 @@ export default function GarageDoorsPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       {/* Alutech */}
       <section className="py-16 lg:py-20">
@@ -134,8 +127,6 @@ export default function GarageDoorsPage() {
         </div>
       </section>
 
-      <AnimatedDivider />
-
       {/* Automation systems */}
       <section className="py-16 lg:py-20 bg-slate-100 dark:bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -162,8 +153,6 @@ export default function GarageDoorsPage() {
           </div>
         </div>
       </section>
-
-      <AnimatedDivider />
 
       <CTASection
         headline="Ready for a New Garage Door?"

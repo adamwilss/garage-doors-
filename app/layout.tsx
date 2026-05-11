@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Oswald, Open_Sans } from "next/font/google";
 import "./globals.css";
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { StickyMobileCTA } from "./components/StickyMobileCTA";
@@ -10,9 +25,9 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { ChatWidget } from "./components/ChatWidget";
 
 export const metadata: Metadata = {
-  title: "Garage Doors and Automated Gates in Carlisle | Quality Garage Doors Carlisle",
+  title: "Garage Door Repair & Installation Carlisle | Fast Local Service | Quality Garage Doors",
   description:
-    "Family run specialists supplying, installing, repairing and automating garage doors and gates across Carlisle, Cumbria, Dumfries and Galloway, Northumberland and the Scottish Borders. 25 years experience. Free quotes.",
+    "Fast, affordable garage door repair and installation in Carlisle. Broken springs, faulty openers, doors off track. Same day service available. Call for a free quote.",
   keywords: [
     "garage doors",
     "garage door repairs",
@@ -32,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${oswald.variable} ${openSans.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{

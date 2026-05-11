@@ -36,7 +36,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="shrink-0 text-accent font-bold text-sm sm:text-base lg:text-lg tracking-tight">
+          <Link href="/" className="shrink-0 text-accent font-bold text-sm sm:text-base lg:text-lg tracking-tight whitespace-nowrap uppercase">
             Quality Garage Doors Carlisle
           </Link>
 
@@ -48,7 +48,7 @@ export function Header() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   isActive(link.href)
-                    ? "text-accent"
+                    ? "text-urgent"
                     : "text-slate-700 dark:text-slate-300 hover:text-accent"
                 }`}
               >
@@ -66,7 +66,7 @@ export function Header() {
                 type="button"
                 className={`flex items-center gap-1 text-sm font-medium transition-colors ${
                   isServiceActive
-                    ? "text-accent"
+                    ? "text-urgent"
                     : "text-slate-700 dark:text-slate-300 hover:text-accent"
                 }`}
                 aria-expanded={servicesOpen}
@@ -88,7 +88,7 @@ export function Header() {
                         href={item.href}
                         className={`block px-4 py-2.5 text-sm transition-colors ${
                           isActive(item.href)
-                            ? "text-accent font-semibold bg-accent-light"
+                            ? "text-urgent font-semibold bg-accent-light"
                             : "text-slate-700 dark:text-slate-300 hover:text-accent hover:bg-slate-50 dark:hover:bg-white/5"
                         }`}
                       >
@@ -106,6 +106,13 @@ export function Header() {
             <a
               href={business.phoneHref}
               className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white hover:text-accent transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              {business.phone}
+            </a>
+            <a
+              href={business.phoneHref}
+              className="flex items-center gap-2 text-sm font-bold text-urgent hover:text-urgent-600 transition-colors"
             >
               <Phone className="w-4 h-4" />
               {business.phone}
@@ -191,7 +198,7 @@ export function Header() {
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-4 py-3 bg-accent hover:bg-accent-600 text-white text-base font-semibold rounded-md transition-colors mt-2"
+              className="inline-flex items-center justify-center px-4 py-3 bg-urgent hover:bg-urgent-600 text-white text-base font-semibold rounded-md transition-colors mt-2"
               onClick={() => setMobileOpen(false)}
             >
               Get a Free Quote

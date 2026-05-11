@@ -3,7 +3,6 @@ import { caseStudies } from "@/lib/content";
 import { Hero } from "../components/Hero";
 import { CaseStudyCard } from "../components/CaseStudyCard";
 import { ScrollReveal } from "../components/ScrollReveal";
-import { AnimatedDivider } from "../components/AnimatedDivider";
 
 export const metadata: Metadata = {
   title: "Case Studies | Garage Door and Gate Projects | Quality Garage Doors Carlisle",
@@ -19,8 +18,6 @@ export default function CaseStudiesPage() {
         headline="Case Studies"
         subheadline="Real projects, real outcomes. These case studies show how we approach garage door and gate installations across the region."
       />
-
-      <AnimatedDivider />
 
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
