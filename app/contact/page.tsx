@@ -106,7 +106,7 @@ export default function ContactPage() {
             {/* Form */}
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Request a Free Quote</h2>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 whitespace-nowrap">Request a Free Quote</h2>
               </ScrollReveal>
               <ContactForm />
             </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-8">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white">Find Us</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white whitespace-nowrap">Find Us</h2>
               <p className="text-slate-600 dark:text-slate-400 mt-2">{business.address}</p>
             </div>
           </ScrollReveal>

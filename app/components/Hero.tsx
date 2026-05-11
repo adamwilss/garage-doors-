@@ -96,7 +96,7 @@ export function Hero({
         {...(prefersReducedMotion ? {} : { style: { opacity: contentOpacity, y: contentY, willChange: "transform, opacity" } })}
       >
         <div>
-          <h1 className="text-xl sm:text-xl md:text-[1.75rem] lg:text-[2.2rem] xl:text-[2.8rem] 2xl:text-[3.25rem] font-extrabold tracking-tight leading-tight mb-6 text-balance sm:whitespace-nowrap">
+          <h1 className="text-xl sm:text-xl md:text-[1.75rem] lg:text-[2.2rem] xl:text-[2.8rem] 2xl:text-[3.25rem] font-extrabold tracking-tight leading-tight mb-6 whitespace-nowrap">
             <AssembleText text={headline} />
           </h1>
           <motion.p

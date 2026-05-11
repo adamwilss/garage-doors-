@@ -22,7 +22,7 @@ export function GalleryContent() {
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent-light dark:bg-accent/10 text-accent mb-6">
           <Camera className="w-7 h-7" />
         </div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
           <AssembleText text="Installation Gallery" />
         </h1>
         <p className="text-slate-600 dark:text-slate-400 text-lg">

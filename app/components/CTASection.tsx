@@ -24,7 +24,7 @@ export function CTASection({
       <section className={isDark ? "bg-slate-100 dark:bg-[#050505]" : "bg-accent"}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 ${
+            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 whitespace-nowrap ${
               isDark ? "text-slate-900 dark:text-white" : "text-white"
             }`}>
               {headline}

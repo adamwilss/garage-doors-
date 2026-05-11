@@ -36,7 +36,7 @@ export default function GatesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 Gate Types and Materials
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -69,7 +69,7 @@ export default function GatesPage() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <ScrollReveal direction="left">
               <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                   Security, Privacy and Kerb Appeal
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-4">
@@ -123,7 +123,7 @@ export default function GatesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 Areas We Cover for Gates
               </h2>
               <p className="text-slate-600 dark:text-slate-400">

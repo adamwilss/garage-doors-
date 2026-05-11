@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { business } from "@/lib/content";
@@ -37,14 +36,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="shrink-0 relative w-[180px] h-[40px] sm:w-[220px] sm:h-[50px]">
-            <Image
-              src="/images/logo.png"
-              alt="Quality Garage Doors Carlisle"
-              fill
-              className="object-contain"
-              priority
-            />
+          <Link href="/" className="shrink-0 text-accent font-bold text-sm sm:text-base lg:text-lg tracking-tight">
+            Quality Garage Doors Carlisle
           </Link>
 
           {/* Desktop Nav */}

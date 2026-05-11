@@ -58,7 +58,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="Our Services" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -91,7 +91,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="Why Choose Quality Garage Doors Carlisle" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -124,7 +124,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="Popular Garage Door Types" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -200,7 +200,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <ScrollReveal direction="left" delay={0.1}>
               <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                   Automated &amp; Manual Gates
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
@@ -249,7 +249,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="Recent Projects" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -305,7 +305,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="What Our Customers Say" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -332,7 +332,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="Areas We Cover" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
@@ -373,7 +373,7 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" delay={0.1}>
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 whitespace-nowrap">
                 <AssembleText text="Frequently Asked Questions" />
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-lg">
