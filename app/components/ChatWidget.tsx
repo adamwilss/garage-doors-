@@ -128,7 +128,7 @@ function ChatPanel({
               className={`px-4 py-3 rounded-2xl max-w-[85%] leading-relaxed ${
                 msg.role === "user"
                   ? "bg-accent text-white rounded-br-sm"
-                  : "bg-white dark:bg-[#1a1a1a] text-slate-800 dark:text-slate-100 rounded-bl-sm shadow-sm dark:shadow-none border border-slate-200 dark:border-[#2a2a2a]"
+                  : "bg-white dark:bg-[#1a1a1a] text-slate-800 rounded-bl-sm shadow-sm dark:shadow-none border border-slate-200 dark:border-[#2a2a2a]"
               }`}
             >
               <LinkifiedText text={msg.content} fullPage={fullPage} />
