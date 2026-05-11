@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot, User, Maximize2, ArrowLeft } from "lucide-react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { MessageCircle, X, Send, Bot, User, Maximize2, ArrowLeft, MapPin, Phone, FileText } from "lucide-react";
 import Link from "next/link";
 
 interface Message {
@@ -16,6 +16,67 @@ const WELCOME_MESSAGE: Message = {
   content:
     "Hello! I'm Garry, the assistant for Quality Garage Doors Carlisle. I can help with questions about garage doors, gates, repairs and automation in Carlisle and the surrounding area. What would you like to know?",
 };
+
+// Quick links shown below the input
+const QUICK_LINKS = [
+  { label: "Services", href: "/garage-doors", icon: null },
+  { label: "Repairs", href: "/garage-door-repairs", icon: null },
+  { label: "Contact", href: "/contact", icon: FileText },
+  { label: "Call Us", href: "tel:01228532495", icon: Phone },
+];
+
+/** Parse markdown-style links [text](href) into React elements */
+function LinkifiedText({ text, fullPage }: { text: string; fullPage?: boolean }) {
+  const parts = useMemo(() => {
+    const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const result: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        result.push(text.slice(lastIndex, match.index));
+      }
+      const [, linkText, href] = match;
+      const isExternal = href.startsWith("http") || href.startsWith("tel:");
+      if (isExternal) {
+        result.push(
+          <a
+            key={`${match.index}-link`}
+            href={href}
+            className="underline font-semibold hover:opacity-80"
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+          >
+            {linkText}
+          </a>
+        );
+      } else {
+        result.push(
+          <Link
+            key={`${match.index}-link`}
+            href={href}
+            className="underline font-semibold hover:opacity-80"
+          >
+            {linkText}
+          </Link>
+        );
+      }
+      lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+      result.push(text.slice(lastIndex));
+    }
+    return result.length ? result : [text];
+  }, [text]);
+
+  return (
+    <span className={`whitespace-pre-wrap ${fullPage ? "text-base" : "text-sm"}`}>
+      {parts.map((part, i) => (
+        <span key={i}>{part}</span>
+      ))}
+    </span>
+  );
+}
 
 function ChatPanel({
   messages,
@@ -68,14 +129,12 @@ function ChatPanel({
             )}
             <div
               className={`px-4 py-3 rounded-2xl max-w-[85%] leading-relaxed ${
-                fullPage ? "text-base" : "text-sm"
-              } ${
                 msg.role === "user"
                   ? "bg-accent text-white rounded-br-sm"
                   : "bg-slate-100 dark:bg-[#222] text-slate-800 dark:text-slate-200 rounded-bl-sm"
               }`}
             >
-              {msg.content}
+              <LinkifiedText text={msg.content} fullPage={fullPage} />
             </div>
             {msg.role === "user" && (
               <div className="w-9 h-9 rounded-full bg-slate-200 dark:bg-[#333] text-slate-600 dark:text-slate-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -100,8 +159,26 @@ function ChatPanel({
         )}
       </div>
 
-      {/* Input */}
+      {/* Input + Quick links */}
       <div className="px-3 sm:px-6 py-3 sm:py-4 border-t border-slate-200 dark:border-[#2a2a2a] shrink-0">
+        {/* Quick links */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {QUICK_LINKS.map((link) => {
+            const isExternal = link.href.startsWith("http") || link.href.startsWith("tel:");
+            const Tag = isExternal ? "a" : Link;
+            const props = isExternal ? { href: link.href } : { href: link.href };
+            return (
+              <Tag
+                key={link.label}
+                {...props}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-light/60 hover:bg-accent-light text-accent text-xs font-medium rounded-full transition-colors"
+              >
+                {link.icon && <link.icon className="w-3 h-3" />}
+                {link.label}
+              </Tag>
+            );
+          })}
+        </div>
         <div className="flex gap-2">
           <input
             type="text"

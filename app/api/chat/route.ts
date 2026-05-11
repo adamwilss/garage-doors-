@@ -13,9 +13,21 @@ Key facts:
 - Areas: Carlisle, Cumbria, Dumfries and Galloway, Penrith, Workington, Whitehaven, Northumberland, Scottish Borders
 - Phone: 01228 595 595
 - WhatsApp available
-- Contact page: /contact
 
-Be friendly, concise and helpful. If asked about something outside garage doors and gates, politely redirect to relevant topics. Always encourage getting a free quote via the contact page.`;
+Available pages on the website (use markdown links like [Page Name](/path) when relevant):
+- Home: /
+- Garage Doors: /garage-doors
+- Repairs: /garage-door-repairs
+- Automation: /garage-door-automation
+- Gates: /gates
+- Gallery: /gallery
+- Case Studies: /case-studies
+- Areas Covered: /areas-covered
+- Brochures: /brochures
+- Contact / Free Quote: /contact
+- Chat: /chat
+
+Be friendly, concise and helpful. When mentioning any service or page, always link to it using markdown format like [Garage Doors](/garage-doors) or [Contact us](/contact). If asked about something outside garage doors and gates, politely redirect to relevant topics. Always encourage getting a free quote via the contact page.`;
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.garage || process.env.GARAGE || process.env.OPENAI_API_KEY;

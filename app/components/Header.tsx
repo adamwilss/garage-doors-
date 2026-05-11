@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { business } from "@/lib/content";
@@ -36,8 +37,14 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="shrink-0 text-accent font-bold text-sm sm:text-base lg:text-lg tracking-tight whitespace-nowrap uppercase">
-            Quality Garage Doors Carlisle
+          <Link href="/" className="shrink-0 relative w-[160px] h-[36px] sm:w-[200px] sm:h-[44px]">
+            <Image
+              src="/images/logo-new.png"
+              alt="Quality Garage Doors Carlisle"
+              fill
+              className="object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -103,13 +110,6 @@ export function Header() {
 
           {/* Desktop CTA + Theme */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={business.phoneHref}
-              className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white hover:text-accent transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              {business.phone}
-            </a>
             <a
               href={business.phoneHref}
               className="flex items-center gap-2 text-sm font-bold text-urgent hover:text-urgent-600 transition-colors"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
@@ -63,6 +64,24 @@ export function GarageDoorReveal({ children }: { children: React.ReactNode }) {
 
         {/* Brand accent line at bottom of door */}
         <div className="h-1 bg-accent shrink-0" />
+
+        {/* Logo centered on door */}
+        <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+          <div
+            className="relative w-48 h-14 sm:w-60 sm:h-16 bg-[#e5e5e5] dark:bg-[#252525] rounded-lg px-4 py-2 flex items-center justify-center"
+            style={{
+              filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.8))",
+            }}
+          >
+            <Image
+              src="/images/logo-new.png"
+              alt="Quality Garage Doors Carlisle"
+              fill
+              className="object-contain p-2"
+              priority
+            />
+          </div>
+        </div>
 
         {/* Handle */}
         <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 z-30">

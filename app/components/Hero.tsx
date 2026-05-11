@@ -5,6 +5,7 @@ import { business } from "@/lib/content";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, MessageCircle, FileText } from "lucide-react";
 import { AssembleText } from "./AssembleText";
+import { GarageDoorReveal } from "./GarageDoorReveal";
 
 export type HeroVariant = "default" | "garage-doors" | "repairs" | "automation" | "gates" | "gallery" | "contact" | "content";
 
@@ -167,6 +168,10 @@ export function Hero({
       </div>
     </section>
   );
+
+  if (variant === "default") {
+    return <GarageDoorReveal>{heroContent}</GarageDoorReveal>;
+  }
 
   return heroContent;
 }
